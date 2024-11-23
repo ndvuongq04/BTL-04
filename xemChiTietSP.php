@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khác</title>
-    <link rel="stylesheet" href="css/khac.css">
+    <title>Xem chi tiết</title>
+    <link rel="stylesheet" href="css/tra.css">
 </head>
 
 <body>
+
     <!-- header -->
     <?php
     require('layout/header.php')
     ?>
     <!-- end header -->
-    <h1>Hello from file khac.php</h1>
+    <h1>Hello from file xemChiTietSP.php</h1>
     <!-- footer -->
 
     <!-- Phúc , Tường  -->

@@ -18,6 +18,8 @@
     <h1>Hello from file tra.php</h1>
     <!-- footer -->
 
+    <!-- Phúc , Tường  -->
+
     <?php
     require('layout/footer.php')
     ?>

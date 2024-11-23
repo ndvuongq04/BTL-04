@@ -17,6 +17,8 @@
     <h1>Hello from file caPhe.php</h1>
     <!-- footer -->
 
+    <!-- Phúc , Tường  -->
+
     <?php
     require('layout/footer.php')
     ?>

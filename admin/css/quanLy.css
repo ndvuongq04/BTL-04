@@ -1,0 +1,67 @@
+.quanLyDH {
+    margin: 130px 30px;
+    height: 100vh;
+
+}
+
+.quanLyDH table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 13px;
+}
+
+/* chọn các phần tử thứ tự chẵn (2, 4, 6, ...) trong số các hàng <tr> */
+tr:nth-child(even) {
+    /* Áp dụng màu nền (một tông màu xám nhạt) cho các hàng chẵn được chọn */
+    background-color: #dddddd;
+}
+
+
+td a,
+.create {
+    text-decoration: none;
+    padding: 8px 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 6px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    /* Đẩy các phần tử ra 2 bên */
+    align-items: center;
+    /* Căn giữa các phần tử theo chiều dọc */
+    padding: 10px;
+    /* Thêm khoảng cách bên trong */
+}
+
+.title .create {
+    background-color: #24ACF2;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 50px;
+    padding-right: 90px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: inline-block;
+    /* Đảm bảo nút hiển thị ngang */
+    text-align: center;
+    text-decoration: none;
+    /* Xóa gạch chân */
+    white-space: nowrap;
+    /* Đảm bảo văn bản không xuống dòng */
+}
+
+td a,
+.title .create:hover {
+    background-color: #1c8cd1;
+    /* Màu nút khi hover */
+}
