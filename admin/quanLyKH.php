@@ -12,9 +12,9 @@
     <!-- header -->
     <?php
     require('layout/header.php');
-    require('php/service/getAll_object.php');
-    // hàm của service/getAll_object.php
-    $users = getAll_user(($con));
+    require('../php/admin/getAllObject.php');
+    // hàm của admin/getAll_object.php
+    $users = getAll_object($con, 'nguoi_dung');
     ?>
     <!-- end header -->
     <!-- <h1>Hello from file quanLyKH.php</h1> -->
@@ -44,9 +44,9 @@
                     <td><?php echo $user['ten_dang_nhap'] ?></td>
                     <td><?php echo $user['so_dien_thoai'] ?></td>
                     <td>
-                        <a href="#" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
-                        <a href="#" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
-                        <a href="#" style=" background-color: #DC3640; color : white;">Xóa</a>
+                        <a href="xemCT_KH.php?id=<?php echo $user['id'] ?>"" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
+                        <a href="capNhat_KH.php?id=<?php echo $user['id'] ?>"" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
+                        <a href="xoa_KH.php?id=<?php echo $user['id'] ?>" style=" background-color: #DC3640; color : white;">Xóa</a>
                     </td>
                 </tr>
             <?php

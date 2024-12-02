@@ -1,18 +1,22 @@
 <?php
-echo "hello from getAll_object.php <br>";
-require('connectMysql.php');
+echo "hello from getAllObject.php <br>";
+
+require($_SERVER['DOCUMENT_ROOT'] . '/BTL-04/php/connectMysql.php');
+// require('../connectMysql.php');
+
+
 
 // $con thuộc file connectMysql.php
 // hàm
 function hello()
 {
-    return "hello from getAll_object.php";
+    return "hello from getAllObject.php";
 }
 
-function getAll_user($con)
+function getAll_object($con, $tableName)
 {
     // Câu lệnh SQL
-    $sql = "SELECT * FROM nguoi_dung";
+    $sql = "SELECT * FROM $tableName";
 
     // Mảng lưu kết quả
     $Users = [];
@@ -22,6 +26,7 @@ function getAll_user($con)
 
     // Kiểm tra câu lệnh đã sẵn sàng chưa
     if ($stmt) {
+
         // Thực thi câu lệnh SQL
         $stmt->execute();
 

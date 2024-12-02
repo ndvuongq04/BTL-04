@@ -7,7 +7,6 @@
     <title>Đăng ký</title>
 
     <link rel="stylesheet" href="css/dangKy.css">
-    <link rel="stylesheet" href="/Web-site-ban-hang/assels/style.css">
 </head>
 
 <body>
@@ -51,6 +50,11 @@
             <div class="dau_vao">
                 <label for="nhapLaiMatKhau">Nhập lại Mật Khẩu</label>
                 <input type="password" name="nhapLaiMatKhau" placeholder="Nhập lại mật khẩu" required>
+            </div>
+
+            <div>
+                <!-- role -->
+                <input type="hidden" name="vaiTro" value="USER">
             </div>
 
             <div class="btn-dangKy">

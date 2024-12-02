@@ -1,0 +1,47 @@
+.delete {
+    margin: 130px 30px;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+
+}
+
+.delete .title {
+    border-bottom: 1px solid #979494;
+    margin: 25px 0px 15px 0px;
+}
+
+.warning {
+    background-color: #f925164e;
+    color: rgb(76, 12, 12);
+    justify-content: space-between;
+    align-items: center;
+    width: 98.7%;
+    padding: 3px 10px;
+    font-size: 16px;
+    border-radius: 2px;
+
+}
+
+.del {
+    margin-top: 25px;
+}
+
+button {
+    border-radius: 5px;
+    border: 1px solid #acacac;
+    padding: 8px 25px;
+    height: 45px;
+    width: 100%;
+    font-size: 17px;
+}
+
+a {
+    /* text-align: center; */
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #acacac;
+    padding: 8px 25px;
+    height: 45px;
+    width: 100%;
+    font-size: 17px;
+}

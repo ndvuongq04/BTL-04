@@ -31,10 +31,6 @@
         </div>
 
         <div class="xac_thuc">
-            <div class="dang_ky">
-                <a class="btn" href="dangKy.php">Đăng ký</a>
-            </div>
-
             <div class="dang_nhap">
                 <a class="btn" href="dangNhap.php">Đăng nhập</a>
             </div>
