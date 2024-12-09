@@ -1,3 +1,8 @@
+<?php
+// ktra người dùng đăng nhập hay chưa
+require('../php/checkSession.php');
+checkSession();
+?>
 <!DOCTYPE html>
 <html lang="vi">
 

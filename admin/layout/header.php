@@ -31,9 +31,12 @@
         </div>
 
         <div class="xac_thuc">
-            <div class="dang_nhap">
-                <a class="btn" href="dangNhap.php">Đăng nhập</a>
+
+            <div class="dang_xuat">
+                <!-- lỗi : kbt tại sao đúng -->
+                <a class="btn" href="../php/logout.php">Đăng xuất</a>
             </div>
+
 
             <!-- <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="40px" viewBox="0 0 15 15">

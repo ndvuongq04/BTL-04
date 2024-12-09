@@ -15,11 +15,45 @@
     ?>
     <!-- end header -->
 
-    <h1>Hello from file nuocCoGa.php</h1>
+    <div class="mid">
+        <div class="tieude">
+            <b>Nước uống có gas</b>
+        </div>
+        <div class="product">
+            <div class="info">
+                <a href=""><img src="img/nuoccoga/sprite.webp" alt=""></a>
+                <p>Sprite</p>
+                <div class="price">
+                    15.000 đ
+                </div>
+            </div>
+            <div class="info">
+                <a href=""><img src="img/nuoccoga/sprite.webp" alt=""></a>
+                <p>Sprite</p>
+                <div class="price">
+                    15.000 đ
+                </div>
+            </div>
+
+            <div class="info">
+                <a href=""><img src="img/nuoccoga/sprite.webp" alt=""></a>
+                <p>Sprite</p>
+                <div class="price">
+                    15.000 đ
+                </div>
+            </div>
+
+            <div class="info">
+                <a href=""><img src="img/nuoccoga/sprite.webp" alt=""></a>
+                <p>Sprite</p>
+                <div class="price">
+                    15.000 đ
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- footer -->
-
-    <!-- Phúc , Tường  -->
-
     <?php
     require('layout/footer.php')
     ?>

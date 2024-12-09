@@ -11,4 +11,4 @@ if ($con) {
 } else {
     echo 'kết nối không thành công';
 }
-echo 'hello from connectMysql.php <br>';
+// echo 'hello from connectMysql.php <br>';

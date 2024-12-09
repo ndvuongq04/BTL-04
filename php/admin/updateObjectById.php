@@ -30,3 +30,28 @@ function updateUserById($con, $id, $hoVaTen, $idVaiTro, $soDienThoai, $gioiTinh,
         return "Lỗi câu lệnh sql ";
     }
 }
+
+function updateProductById($con, $id, $ten, $loai, $so_luong, $gia, $mo_ta, $anh)
+{
+
+    // sql
+    $sql = "UPDATE san_pham SET ten = ? , loai = ? ,  so_luong = ? , gia = ? , mo_ta = ? , anh = ? WHERE id = ? ";
+
+    // chuan bị cau lenh sql
+    $stmt = $con->prepare($sql); // true nếu sẵn sàng
+
+    if ($stmt) {
+
+        // gắn các tham số cho câu lệnh
+        $stmt->bind_param("ssiissi", $ten, $loai, $so_luong, $gia, $mo_ta, $anh, $id);
+
+        // thuc thi câu lệnh
+        if ($stmt->execute()) {
+            return "đã cập nhật product vào database";
+        } else {
+            return "Lỗi không cập nhật được product vào database";
+        }
+    } else {
+        return "lỗi câu lệnh sql";
+    }
+}

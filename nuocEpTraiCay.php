@@ -14,11 +14,38 @@
     require('layout/header.php')
     ?>
     <!-- end header -->
-    <h1>Hello from file nuocEpTraiCay.php</h1>
+    
     <!-- footer -->
 
     <!-- Phúc , Tường  -->
-
+    <div class="mid">
+        <div class="tieude">
+            <b>Trà trái cây</b>
+        </div>
+        <div class= "product">
+            <div class="info">
+                <a href=""><img src="img/tra/tra1.webp" alt=""></a>
+                <p>Oolong Tứ quý dâu trân châu</p>
+                <div class="price">
+                    49.000 đ
+                </div>
+            </div> 
+            <div class="info">
+                <a href=""><img src="img/tra/tra2.webp" alt=""></a>
+                <p>Oolong Tứ quý kim quất trân châu</p>
+                <div class="price">
+                    49.000 đ
+                </div>
+            </div>
+            <div class="info">
+                <a href=""><img src="img/tra/tra2.webp" alt=""></a>
+                <p>Oolong Tứ quý kim quất trân châu</p>
+                <div class="price">
+                    49.000 đ
+                </div>
+            </div>  
+        </div>
+    </div>
     <?php
     require('layout/footer.php')
     ?>

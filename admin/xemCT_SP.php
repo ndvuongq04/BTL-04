@@ -1,15 +1,25 @@
+<?php
+// ktra người dùng đăng nhập hay chưa
+require('../php/checkSession.php');
+checkSession();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
     <link rel="stylesheet" href="css/view.css">
 </head>
+
 <body>
     <!-- header -->
     <?php
     require('layout/header.php');
+    require('../php/admin/getObjectById.php');
+    $idProduct = $_GET['id'];
+    $product = getObjectById($con, 'san_pham', $idProduct);
     ?>
     <!-- code -->
     <div class="view">
@@ -24,31 +34,31 @@
                     </tr>
                     <tr>
                         <th>ID sản phẩm</th>
-                        <td>1</td>
+                        <td><?php echo $product['id'] ?></td>
                     </tr>
                     <tr>
                         <th>Tên sản phẩm</th>
-                        <td>Matcha Latte</td>
+                        <td><?php echo $product['ten'] ?></td>
                     </tr>
                     <tr>
                         <th>Giá</th>
-                        <td>35.000 VND</td>
+                        <td><?php echo $product['gia'] ?></td>
                     </tr>
                     <tr>
                         <th>Số lượng</th>
-                        <td>2</td>
+                        <td><?php echo $product['so_luong'] ?></td>
                     </tr>
                     <tr>
                         <th>Phân loại</th>
-                        <td>Trà</td>
+                        <td><?php echo $product['loai'] ?></td>
                     </tr>
                     <tr>
                         <th>Mô tả sản phẩm</th>
-                        <td>Chất gây nghiện</td>
+                        <td><?php echo $product['mo_ta'] ?></td>
                     </tr>
                     <tr>
                         <th>Ảnh sản phẩm</th>
-                        <td><img src="img/MatchaLatte.jpg" width="50px" height="50px"></td>
+                        <td><img src="img/<?php echo $product['anh'] ?>" width="300px" height="300px"></td>
                     </tr>
 
                 </table>
@@ -59,4 +69,5 @@
         </div>
     </div>
 </body>
+
 </html>

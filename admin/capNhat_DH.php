@@ -1,11 +1,18 @@
+<?php
+// ktra người dùng đăng nhập hay chưa
+require('../php/checkSession.php');
+checkSession();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật đơn hàng</title>
     <link rel="stylesheet" href="css/update.css">
 </head>
+
 <body>
     <!-- header -->
     <?php
@@ -38,7 +45,7 @@
                         </select>
                     </div>
                     <div class="infor">
-                    <label for="payment"> Phương thức thanh toán</label>
+                        <label for="payment"> Phương thức thanh toán</label>
                         <select id="payment" name="payment" style="opacity: 0.6;" required>
                             <option value="cod" selected>Thanh toán khi nhận hàng</option>
                             <option value="banking">Thanh toán qua Internet Banking</option>
@@ -54,4 +61,5 @@
         </div>
     </div>
 </body>
+
 </html>

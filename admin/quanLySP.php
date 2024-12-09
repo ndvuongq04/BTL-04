@@ -1,3 +1,8 @@
+<?php
+// ktra người dùng đăng nhập hay chưa
+require('../php/checkSession.php');
+checkSession();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,9 +49,9 @@
                     <td><?php echo $product['so_luong'] ?></td>
                     <td><?php echo $product['loai'] ?></td>
                     <td>
-                        <a href="xemCT_SP.php" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
-                        <a href="capNhat_SP.php" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
-                        <a href="xoa_SP.php" style=" background-color: #DC3640; color : white;">Xóa</a>
+                        <a href="xemCT_SP.php?id=<?php echo $product['id'] ?>" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
+                        <a href="capNhat_SP.php?id=<?php echo $product['id'] ?>" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
+                        <a href="xoa_SP.php?id=<?php echo $product['id'] ?>" style=" background-color: #DC3640; color : white;">Xóa</a>
                     </td>
                 </tr>
             <?php

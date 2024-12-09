@@ -1,0 +1,81 @@
+.san_pham {
+    font-size: 18px;
+    margin: 120px 200px;
+    display: flex;
+}
+
+.img img {
+    height: 570px;
+    border-radius: 5px;
+}
+
+.img .img_khac img {
+    margin: 10px 0;
+    height: 100px;
+}
+
+.chi_tiet_img {
+    padding: 5px;
+    margin: 0px 30px;
+}
+
+/* .chon_size button{
+    height: 40px;
+    width: 120px;
+    margin: 5px;
+    background-color: #fff;
+    border: 1px solid#000;
+    border-radius: 7px;
+}
+
+.chon_size button:hover{
+    cursor: pointer;
+    background-color: #E57905;
+} */
+
+.so_luong .so_input {
+    display: flex;
+    width: 100px;
+    border: 1px solid#000;
+    border-radius: 5px;
+}
+
+.so_luong .so_input input {
+    text-align: center;
+    width: 50px;
+    border: none;
+}
+
+.so_luong .so_input button {
+    background-color: transparent;
+    border: none;
+    height: 30px;
+    width: 40px;
+}
+
+.so_luong button:hover {
+    cursor: pointer;
+}
+
+.dat_hang button {
+    height: 50px;
+    width: 600px;
+    margin-top: 30px;
+    color: #fff;
+    background-color: #E57905;
+    border: 1px solid#000;
+    border-radius: 7px;
+}
+
+.dat_hang button {
+    cursor: pointer;
+}
+
+.mo_ta {
+    margin: 50px 200px;
+}
+
+.mo_ta p {
+    margin-top: 20px;
+    line-height: 1.3;
+}
