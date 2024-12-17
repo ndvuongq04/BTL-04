@@ -11,39 +11,31 @@
 <body>
     <!-- header -->
     <?php
-    require('layout/header.php')
+    require('layout/header.php');
+    require('php/client/getObjectByCondition.php');
+    $sanPham = getObjectByCondition($con, 'san_pham', 'NuocEp');
     ?>
-    <!-- end header -->
-    
-    <!-- footer -->
 
-    <!-- Phúc , Tường  -->
     <div class="mid">
         <div class="tieude">
             <b>Trà trái cây</b>
         </div>
-        <div class= "product">
-            <div class="info">
-                <a href=""><img src="img/tra/tra1.webp" alt=""></a>
-                <p>Oolong Tứ quý dâu trân châu</p>
-                <div class="price">
-                    49.000 đ
+        <div class="product">
+            <?php
+            foreach ($sanPham as $sp) {
+            ?>
+                <div class="info">
+                    <a href="xemChiTietSP.php?id=<?php echo $sp['id'] ?>"><img src="admin/img/<?php echo $sp['anh'] ?>" alt=" Lỗi <?php echo $sp['anh'] ?>"></a>
+                    <p>
+                        <a href="xemChiTietSP.php?id=<?php echo $sp['id'] ?>"><?php echo $sp['ten'] ?></a>
+                    </p>
+                    <div class="price">
+                        <?php echo $sp['gia'] ?> đ
+                    </div>
                 </div>
-            </div> 
-            <div class="info">
-                <a href=""><img src="img/tra/tra2.webp" alt=""></a>
-                <p>Oolong Tứ quý kim quất trân châu</p>
-                <div class="price">
-                    49.000 đ
-                </div>
-            </div>
-            <div class="info">
-                <a href=""><img src="img/tra/tra2.webp" alt=""></a>
-                <p>Oolong Tứ quý kim quất trân châu</p>
-                <div class="price">
-                    49.000 đ
-                </div>
-            </div>  
+            <?php
+            }
+            ?>
         </div>
     </div>
     <?php

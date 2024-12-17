@@ -16,7 +16,28 @@ checkSession();
 <body>
     <!-- header -->
     <?php
-    require('layout/header.php');
+    // require('layout/header.php');
+    require('../php/admin/getObjectById.php');
+    require('../php/admin/updateObjectById.php');
+    $idDonHang = $_GET['id'];
+
+    // gọi hàm của getObjectById.php
+    $donHang = getObjectById($con, 'don_hang', $idDonHang);
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idCheck'])) {
+
+        // lấy thông tin từ form
+        $idDonHang = $_POST['idCheck'];
+        $diaChi = $_POST['diaChi'];
+        $trangThai = $_POST['trangThai'];
+
+        // gọi hàm của updateObjectById.php
+        updateOrderById($con, $idDonHang, $diaChi, $trangThai);
+
+        // Sau khi xóa xong, chuyển hướng trở lại trang quản lý khách hàng
+        header('Location: quanLyDH.php');
+        exit; // không thực hiện các câu lệnh phía sau
+    }
     ?>
     <!-- code -->
     <div class="update">
@@ -24,38 +45,32 @@ checkSession();
             <h2>Cập nhật đơn hàng</h2>
         </div>
         <div class="main">
-            <form action="">
+            <form action="capNhat_DH.php" method="post">
                 <div class="gr">
                     <div class="infor">
                         <label for="address">Địa chỉ</label>
-                        <input type="text" id="address" placeholder="" style="opacity: 0.6;" required>
+                        <input type="text" id="address" name="diaChi" style="opacity: 0.6;" value=" <?php echo $donHang['dia_chi'] ?>">
                     </div>
                     <div class="infor">
-                        <label for="price">Tổng tiền</label>
-                        <input type="number" id="price" placeholder="" style="opacity: 0.6;" required>
+                        <label for="mode"> Trạng thái</label>
+                        <select id="mode" name="trangThai" style="opacity: 0.6;" required>
+                            <option value=""> </option>
+                            <option value="daHuy" <?php echo $donHang['trang_thai'] == 'daHuy' ? 'selected' : ' ' ?>>Đã hủy </option>
+                            <option value="choDuyet" <?php echo $donHang['trang_thai'] == 'choDuyet' ? 'selected' : ' ' ?>>Đang chờ duyệt</option>
+                            <option value="dangVanChuyen" <?php echo $donHang['trang_thai'] == 'dangVanChuyen' ? 'selected' : ' ' ?>>Đang vận chuyển</option>
+                            <option value="daNhanHang" <?php echo $donHang['trang_thai'] == 'daNhanHang' ? 'selected' : ' ' ?>>Đã nhận hàng</option>
+                        </select>
                     </div>
                 </div>
                 <div class="gr">
                     <div class="infor">
-                        <label for="mode"> Trạng thái</label>
-                        <select id="mode" name="mode" style="opacity: 0.6;" required>
-                            <option value="Đang chờ duyệt" selected>Đang chờ duyệt</option>
-                            <option value="Đang vận chuyển">Đang vận chuyển</option>
-                            <option value="Đã nhận hàng">Đã nhận hàng</option>
-                        </select>
-                    </div>
-                    <div class="infor">
-                        <label for="payment"> Phương thức thanh toán</label>
-                        <select id="payment" name="payment" style="opacity: 0.6;" required>
-                            <option value="cod" selected>Thanh toán khi nhận hàng</option>
-                            <option value="banking">Thanh toán qua Internet Banking</option>
-                            <option value="card">Thanh toán bằng thẻ</option>
-                        </select>
+                        <input type="hidden" name="idCheck" value="<?php echo $idDonHang ?>">
                     </div>
                 </div>
+
                 <div class="submit">
                     <a href="quanLyDH.php" style="background-color: #1C8552; color : white;">Trở lại</a>
-                    <a href="" style="background-color: #FBBE00; color : black;">Cập nhật</a>
+                    <button style="background-color: #FBBE00; color : black;">Cập nhật</button>
                 </div>
             </form>
         </div>

@@ -65,3 +65,17 @@ td a,
     background-color: #1c8cd1;
     /* Màu nút khi hover */
 }
+
+.submit {
+    margin: 25px 45%;
+}
+
+.submit>a {
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #acacac;
+    padding: 8px 23%;
+    height: 45px;
+    width: 100%;
+    font-size: 17px;
+}

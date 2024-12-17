@@ -25,8 +25,27 @@
                 <!-- file nuocCoGa.php -->
                 <li><a href="nuocCoGa.php">Đồ uống có ga</a></li>
                 <li><a href="khac.php">Khác</a></li>
-                <li class="left"><a href="dangNhap.php">Đăng nhập</a></li>
-                <li class="left"><a href="dangKy.php">Đăng ký</a></li>
+
+                <!-- ktra nguoi dungf dang nhap hay chua -->
+                <?php
+                /*
+                    - ton tai bien ten dang nhap hay chua
+                        -> roi -> da dang nhap >< chua dang nhap
+                */
+                session_start();
+                if (!isset($_SESSION['tenDangNhap'])) {
+
+                ?>
+                    <li class="left"><a href="dangNhap.php">Đăng nhập</a></li>
+                    <li class="left"><a href="dangKy.php">Đăng ký</a></li>
+                <?php
+                } else { ?>
+                    <li class="left"><a href="gioHang.php">Giỏ hàng</a></li>
+                    <li class="left"><a href="donHang.php">Đơn hàng </a></li>
+                    <li class="left"><a href="php/client/logoutUser.php">Đăng xuất</a></li>
+                <?php
+                }
+                ?>
 
             </ul>
             <!-- End nav -->

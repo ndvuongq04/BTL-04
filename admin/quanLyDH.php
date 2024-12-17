@@ -16,7 +16,11 @@ checkSession();
 <body>
     <!-- header -->
     <?php
-    require('layout/header.php')
+    require('layout/header.php');
+    require('../php/admin/getAllObject.php');
+
+    $donHang = getAll_object($con, 'don_hang');
+
     ?>
     <!-- end header -->
     <!-- <h1>Hello from file quanLyDH.php</h1> -->
@@ -25,7 +29,7 @@ checkSession();
     <div class="quanLyDH">
         <div class="title">
             <h2>Bảng đơn hàng</h2>
-            <a href="#" class="create">Tạo mới ĐH</a>
+
         </div>
 
 
@@ -38,42 +42,24 @@ checkSession();
                 <th>Trạng thái</th>
                 <th>Hoạt động</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>3</td>
-                <td>100000</td>
-                <td>Khi nhận hàng</td>
-                <td>Đang vận chuyển</td>
-                <td>
-                    <a href="#" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
-                    <a href="#" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
-                    <a href="#" style=" background-color: #DC3640; color : white;">Xóa</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>4</td>
-                <td>20000</td>
-                <td>Khi nhận hàng</td>
-                <td>Đang chờ duyệt</td>
-                <td>
-                    <a href="#" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
-                    <a href="#" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
-                    <a href="#" style=" background-color: #DC3640; color : white;">Xóa</a>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>4</td>
-                <td>20000</td>
-                <td>Khi nhận hàng</td>
-                <td>Đã nhận hàng</td>
-                <td>
-                    <a href="#" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
-                    <a href="#" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
-                    <a href="#" style=" background-color: #DC3640; color : white;">Xóa</a>
-                </td>
-            </tr>
+            <?php
+            foreach ($donHang as $dH) {
+            ?>
+                <tr>
+                    <td><?php echo $dH['id'] ?></td>
+                    <td><?php echo $dH['id_nguoi_dung'] ?></td>
+                    <td><?php echo $dH['tong_tien'] ?></td>
+                    <td>Khi nhận hàng</td>
+                    <td><?php echo $dH['trang_thai'] ?></td>
+                    <td>
+                        <a href="xemCT_DH.php?id=<?php echo $dH['id'] ?>" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
+                        <a href="capNhat_DH.php?id=<?php echo $dH['id'] ?>" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
+                        <a href="xemSP_DH.php?id=<?php echo $dH['id'] ?>" style=" background-color: #1C8CD1; color : white;">Xem sản phẩm</a>
+
+                    </td>
+                </tr>
+            <?php
+            } ?>
 
         </table>
     </div>

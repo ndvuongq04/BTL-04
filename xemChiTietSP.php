@@ -16,6 +16,7 @@
     require('php/client/getObjectById.php');
     $idSP = $_GET['id'];
     $sanPham = getObjectById($con, 'san_pham', $idSP);
+
     ?>
     <!-- end header -->
     <div class="san_pham">
@@ -36,20 +37,20 @@
                 <button>Lớn + 14.000đ</button>
             </div> -->
 
-            <div class="so_luong">
-                <p>Số Lượng</p>
-                <div class="so_input">
-                    <button onclick="thay_doi(-1)">-</button>
-                    <input type="text" id="so" value="1" readonly>
-                    <button onclick="thay_doi(1)">+</button>
+            <form action="themSanPham.php" method="post">
+                <input type="hidden" name="idSanPham" value="<?php echo $sanPham['id'] ?>">
+                <input type="hidden" name="giaSanPham" value="<?php echo $sanPham['gia'] ?>">
+                <div class="so_luong">
+                    <p>Số Lượng</p>
+                    <input type="number" name="soLuong" value="1" width="10px" disabled>
                 </div>
-            </div>
 
-            <div class="dat_hang">
-                <a href="">
-                    <button>Mua ngay</button>
-                </a>
-            </div>
+                <div class="dat_hang">
+                    <a href="">
+                        <button>Thêm giỏ hàng</button>
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -61,13 +62,13 @@
         </p>
     </div>
 
-    <script>
+    <!-- <script>
         function thay_doi(so) {
             const dau_vao = document.getElementById("so");
             let so_hien_tai = parseInt(dau_vao.value);
             dau_vao.value = so_hien_tai + so;
         }
-    </script>
+    </script> -->
 
     <!-- footer -->
 

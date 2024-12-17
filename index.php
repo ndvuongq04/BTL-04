@@ -1,6 +1,7 @@
 <!-- header -->
 <?php
 require('layout/header.php')
+
 ?>
 <!-- end header -->
 <!-- banner -->

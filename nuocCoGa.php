@@ -11,7 +11,9 @@
 <body>
     <!-- header -->
     <?php
-    require('layout/header.php')
+    require('layout/header.php');
+    require('php/client/getObjectByCondition.php');
+    $sanPham = getObjectByCondition($con, 'san_pham', 'DoUongCoGa');
     ?>
     <!-- end header -->
 
@@ -20,37 +22,25 @@
             <b>Nước uống có gas</b>
         </div>
         <div class="product">
-            <div class="info">
-                <a href=""><img src="img/nuoccoga/sprite.webp" alt=""></a>
-                <p>Sprite</p>
-                <div class="price">
-                    15.000 đ
+            <?php
+            foreach ($sanPham as $sp) {
+            ?>
+                <div class="info">
+                    <a href="xemChiTietSP.php?id=<?php echo $sp['id'] ?>"><img src="admin/img/<?php echo $sp['anh'] ?>" alt=" Lỗi <?php echo $sp['anh'] ?>"></a>
+                    <p>
+                        <a href="xemChiTietSP.php?id=<?php echo $sp['id'] ?>"><?php echo $sp['ten'] ?></a>
+                    </p>
+                    <div class="price">
+                        <?php echo $sp['gia'] ?> đ
+                    </div>
                 </div>
-            </div>
-            <div class="info">
-                <a href=""><img src="img/nuoccoga/sprite.webp" alt=""></a>
-                <p>Sprite</p>
-                <div class="price">
-                    15.000 đ
-                </div>
-            </div>
+            <?php
+            }
+            ?>
 
-            <div class="info">
-                <a href=""><img src="img/nuoccoga/sprite.webp" alt=""></a>
-                <p>Sprite</p>
-                <div class="price">
-                    15.000 đ
-                </div>
-            </div>
 
-            <div class="info">
-                <a href=""><img src="img/nuoccoga/sprite.webp" alt=""></a>
-                <p>Sprite</p>
-                <div class="price">
-                    15.000 đ
-                </div>
-            </div>
         </div>
+
     </div>
 
     <!-- footer -->

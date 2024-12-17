@@ -55,3 +55,28 @@ function updateProductById($con, $id, $ten, $loai, $so_luong, $gia, $mo_ta, $anh
         return "lỗi câu lệnh sql";
     }
 }
+
+function updateOrderById($con, $id, $diaChi, $trangThai)
+{
+
+    // sql
+    $sql = "UPDATE don_hang SET dia_chi = ? , trang_thai = ? WHERE id = ? ";
+
+    // chuan bị cau lenh sql
+    $stmt = $con->prepare($sql); // true nếu sẵn sàng
+
+    if ($stmt) {
+
+        // gắn các tham số cho câu lệnh
+        $stmt->bind_param("ssi", $diaChi, $trangThai, $id);
+
+        // thuc thi câu lệnh
+        if ($stmt->execute()) {
+            return "đã cập nhật Order vào database";
+        } else {
+            return "Lỗi không cập nhật được Order vào database";
+        }
+    } else {
+        return "lỗi câu lệnh sql";
+    }
+}

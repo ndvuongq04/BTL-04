@@ -16,7 +16,7 @@ checkSession();
 <body>
     <!-- header -->
     <?php
-    // require('layout/header.php');
+    require('layout/header.php');
     include('../php/admin/getObjectById.php');
     include('../php/admin/updateObjectById.php');
 

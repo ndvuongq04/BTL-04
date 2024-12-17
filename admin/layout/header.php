@@ -34,7 +34,7 @@
 
             <div class="dang_xuat">
                 <!-- lỗi : kbt tại sao đúng -->
-                <a class="btn" href="../php/logout.php">Đăng xuất</a>
+                <a class="btn" href="../php/admin/logoutAdmin.php">Đăng xuất</a>
             </div>
 
 

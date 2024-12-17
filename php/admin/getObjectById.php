@@ -9,11 +9,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/BTL-04/php/connectMysql.php');
 // input : tablename , id 
 // output : array
 
-function getSo()
-{
-    $so = 123;
-    return $so;
-}
+
 function getObjectById($con, $tableName, $id)
 {
     // Câu lệnh SQL

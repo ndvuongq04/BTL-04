@@ -1,7 +1,7 @@
 .view {
     margin: 130px auto;
     height: 100vh;
-    width:69%;
+    width:68%;
     font-family: Arial, sans-serif;
 }
 .view .title {
@@ -26,14 +26,14 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 .submit {
-    margin: 25px 45%;
+    margin: 25px 43.2%;
 }
 .submit > a {
     text-decoration: none;
     border-radius: 5px;
     border:1px solid #acacac;
     padding:8px 23%;
-    height:45px;
-    width:100%;
+    height:20px;
+    /* width:60px; */
     font-size: 17px;
 }

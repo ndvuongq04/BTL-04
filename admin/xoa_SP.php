@@ -16,7 +16,7 @@ checkSession();
 <body>
     <!-- header -->
     <?php
-    // require('layout/header.php');
+    require('layout/header.php');
     require('../php/admin/deleteObjectById.php');
     $idProduct = $_GET['id'];
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idCheck'])) {

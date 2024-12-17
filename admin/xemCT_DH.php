@@ -16,7 +16,12 @@ checkSession();
 <body>
     <!-- header -->
     <?php
-    require('layout/header.php');
+    // require('layout/header.php');
+    require('../php/admin/getObjectById.php');
+    $idDonHang = $_GET['id'];
+
+    $donHang = getObjectById($con, 'don_hang', $idDonHang);
+
     ?>
     <!-- code -->
     <div class="view">
@@ -31,23 +36,29 @@ checkSession();
                     </tr>
                     <tr>
                         <th>ID đơn hàng</th>
-                        <td>1</td>
+                        <td><?php echo $donHang['id'] ?></td>
                     </tr>
                     <tr>
-                        <th>ID tài khoản</th>
-                        <td>3</td>
+                        <th>Tên người nhận </th>
+                        <td> <?php echo $donHang['ten'] ?></td>
                     </tr>
+                    <tr>
+                        <th>Số điện thoại </th>
+                        <td> <?php echo $donHang['sdt'] ?></td>
+                    </tr>
+
                     <tr>
                         <th>Địa chỉ</th>
-                        <td> 347 Cổ Nhuế</td>
+                        <td> <?php echo $donHang['dia_chi'] ?></td>
                     </tr>
+
                     <tr>
                         <th>Thành tiền</th>
-                        <td>100.000</td>
+                        <td><?php echo $donHang['tong_tien'] ?> đ</td>
                     </tr>
                     <tr>
                         <th>Trạng thái đơn hàng</th>
-                        <td>Đang vận chuyển</td>
+                        <td><?php echo $donHang['trang_thai'] ?></td>
                     </tr>
                     <tr>
                         <th>Phương thức thanh toán</th>

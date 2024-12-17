@@ -1,4 +1,4 @@
-.trang_chu {
+/* .trang_chu {
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     padding: 10px 0;
@@ -86,4 +86,105 @@
     padding: 0 5px;
     width: 100px;
 
+} */
+
+/* Header */
+
+.trang_chu {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    position: fixed;
+    height: 85px;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+}
+
+.trang_chu .tieu_de {
+    height: 85px;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    float: left;
+    display: flex;
+}
+
+.trang_chu .tieu_de .nav {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    padding: 0px 10px;
+    margin: 0 88px;
+    color: #191919;
+    list-style: none;
+}
+
+.tieu_de .logo {
+    margin-right: 40px;
+    padding: 5px 0px 0px;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 19px 10px;
+    font-size: 35px;
+    line-height: 60px;
+    font-weight: 650;
+    font-family: sans-serif;
+}
+
+.tieu_de .nav li {
+    padding: 19px 10px;
+    justify-content: center;
+    list-style: none;
+    font-size: 16px;
+    line-height: 55px;
+    font-weight: 650;
+    font-family: sans-serif;
+}
+
+.tieu_de .nav li a {
+    color: #000;
+    text-decoration: none;
+    line-height: 46px;
+    display: block;
+}
+
+.trang_chu .xac_thuc {
+    display: flex;
+    padding: 5px;
+    margin-right: 120px;
+}
+
+.trang_chu .xac_thuc:hover .icon {
+    cursor: pointer;
+}
+
+.trang_chu .icon:hover .sub_icon {
+    cursor: pointer;
+    display: block;
+}
+
+.trang_chu .xac_thuc .sub_icon {
+    display: none;
+    padding: 0 12px;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.trang_chu .xac_thuc .sub_icon a {
+    text-decoration: none;
+    line-height: 46px;
+    color: #000;
+}
+
+.trang_chu .xac_thuc .sub_icon li {
+    list-style: none;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
 }

@@ -68,7 +68,22 @@ form {
     border-radius: 3px;
     border: 1px solid #acacac;
 }
+.infor #loai {
+    margin-top: 15px;
+    padding: 6.5px 12px;
+    font-size: 16px;
+    color:#000;
+    border-radius: 3px;
+    border:1px solid #acacac;
 
+}
+.infor #anhSanPham {
+    padding:0px;
+    margin: 5px 0px;
+    text-align: center;
+    height:100%;
+    width:100%;
+}
 .mota {
     margin: 10px 0px;
 }
@@ -87,15 +102,25 @@ form {
 
 .submit {
     margin: 25px 39%;
+    display:flex;
 }
-
+.submit > button {
+    border-radius: 5px;
+    border: 1px solid #acacac;
+    padding: 8px 2%;
+    height:37.6px ;
+    width: 100%;
+    font-size: 17px;
+    box-sizing: border-box;
+    margin-left: 6px;
+}
 .submit>a {
     /* text-align: center; */
     text-decoration: none;
     border-radius: 5px;
     border: 1px solid #acacac;
     padding: 8px 5%;
-    height: 45px;
+    height: 20px;
     width: 80px;
     font-size: 17px;
 }

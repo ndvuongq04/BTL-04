@@ -31,6 +31,13 @@ if (isset($_SESSION['tenDangNhap'])) {
         // gọi hàm checkLoginAdmin của checkLogin.php
         if (checkLoginAdmin($con, $tenDangNhap, $matKhau)) {
             // người dùng đăng nhập thành công -> bắt đầu 1 phiên làm việc
+
+
+            /*
+                    Logic đăng nhập
+                - lúc người dùng đăng nhâp thành công -> đưa tenDangNhap và id lên session
+                - đưa id lên để thuận tiện lấy id của người dùng khi thao tác với giỏ hàng
+            */
             session_start();
             $_SESSION["tenDangNhap"] = "$tenDangNhap";
             header('Location: index.php');

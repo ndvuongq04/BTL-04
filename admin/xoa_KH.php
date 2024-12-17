@@ -45,7 +45,7 @@ checkSession();
             <div class="del">
                 <form action="xoa_KH.php" method="POST">
                     <input type="hidden" name="idCheck" , value="<?php echo $_GET['id'] ?>">
-                    <a href="quanLyKH.php" style="background-color: #1C8552; color : white;">Trở lại</a>
+                    <a href="quanLyKH.php" style="background-color: #1C8552; color : white; padding: 8px 19px;">Trở lại</a>
                     <button type="submit" style="background-color: #c5303a; color : white;">
                         Xóa
                     </button>

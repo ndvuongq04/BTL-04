@@ -4,9 +4,11 @@ session_start();
 if (isset($_SESSION['tenDangNhap'])) {
     // đã tồn tại
     // xóa nó khỏi session
-    unset($_SESSION['tenDangNhap']);
+
+    session_unset(); // Xóa tất cả biến trong session
+    session_destroy(); // Hủy phiên làm việc
 }
-header("Location: ../admin/dangNhap.php?dang-xuat");
+header("Location: ../../index.php");
 
 // khi đăng nhập -> đã gán $_SESSION['tenDangNhap'] = $tenDangNhap -> đăng nhập thành công -> bắt đầu 1 phiên mới
 //->  echo $_SESSION['tenDangNhap'] sẽ in ra tenDangNhap của bạn
