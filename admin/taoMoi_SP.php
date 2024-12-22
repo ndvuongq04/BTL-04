@@ -11,6 +11,18 @@ checkSession(2);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tạo sản phẩm</title>
     <link rel="stylesheet" href="css/create.css">
+    <style>
+        .error {
+            color: red;
+            display: none;
+
+        }
+
+        .red {
+            color: red;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -18,8 +30,22 @@ checkSession(2);
     <?php
     require('layout/header.php');
     require('../php/admin/saveObject.php');
-    // Kiểm tra nếu người dùng nhấn nút "Tạo mới không"
+    // Kiểm tra nếu người dùng nhấn nút "Tạo mới"
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Lấy tên sản phẩm từ form
+        $tenSanPham = $_POST['tenSanPham'];
+
+        // Kiểm tra tên sản phẩm đã tồn tại trong cơ sở dữ liệu chưa
+        $sql = "SELECT * FROM san_pham WHERE ten = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("s", $tenSanPham);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // if ($result->num_rows > 0) {
+        //     // Tên sản phẩm đã tồn tại
+        //     $error = "Tên sản phẩm đã tồn tại. Vui lòng chọn tên khác.";
+        // } else {
 
         $ten = $_POST['tenSanPham'];  // thực hiện hứng dữ liệu bằng cách gán chúng vào 1 biến khác
         $loai = $_POST['loai'];
@@ -44,6 +70,7 @@ checkSession(2);
         // Sau khi xóa xong, chuyển hướng trở lại trang quản lý khách hàng
         header('Location: quanLySP.php');
         exit; // không thực hiện các câu lệnh phía sau 
+        // }
     }
     ?>
     <!-- code -->
@@ -52,12 +79,13 @@ checkSession(2);
             <h2>Tạo sản phẩm</h2>
         </div>
         <div class="main">
-            <form action="taoMoi_SP.php" method="post" enctype="multipart/form-data">
+            <form id="formTaoMoiSP" action="taoMoi_SP.php" method="post" enctype="multipart/form-data">
                 <div class="gr">
                     <div class="infor">
-                        <label for="name">Tên sản phẩm</label>
-                        <input type="text" id="name" name="tenSanPham" placeholder="" style="opacity: 0.6;" required>
+                        <label for="tenSanPham">Tên sản phẩm</label>
+                        <input type="text" id="tenSanPham" name="tenSanPham" placeholder="Nhập tên sản phẩm" style="opacity: 0.6;">
                     </div>
+                    <!-- <span class="error" style="margin-top: 31px;" id="tenSanPhamError"> Tên sản phẩm không được để trống</span> -->
                     <div class="infor">
                         <label for="loai">Phân loại</label><br>
                         <select name="loai" id="loai">
@@ -69,23 +97,32 @@ checkSession(2);
                         </select>
                     </div>
                 </div>
+                <span class="error" id="tenSanPhamError"> Tên sản phẩm không được để trống</span><br>
                 <div class="gr">
                     <div class="infor">
-                        <label for="quantify">Số lượng</label>
-                        <input type="number" id="quantify" name="soLuong" placeholder="" style="opacity: 0.6;" required>
+                        <label for="soLuong">Số lượng</label>
+                        <input type="number" id="soLuong" name="soLuong" placeholder="Nhập số lượng" style="opacity: 0.6;">
                     </div>
+                    <span class="error" style="margin-top: 31px;" id="soLuongError"> Số lượng không được để trống</span>
+                    <span class="error" style="margin-top: 31px;" id="soLuongAmError"> Số lượng phải lớn hơn 0</span>
                     <div class="infor">
-                        <label for="price">Giá</label>
-                        <input type="number" id="price" name="gia" placeholder="" style="opacity: 0.6;" required>
+                        <label for="gia">Giá sản phẩm</label>
+                        <input type="number" id="gia" name="gia" placeholder="Nhập giá sản phẩm" style="opacity: 0.6;">
                     </div>
+                    <span class="error" style="margin-top: 31px;" id="giaError"> Giá sản phẩm không được để trống</span>
+                    <span class="error" style="margin-top: 31px;" id="giaAmError"> Giá sản phẩm phải lớn hơn 0</span>
                 </div>
+
                 <div class="mota">
-                    Mô tả sản phẩm <br><textarea name="moTaSanPham"></textarea><br>
+                    Mô tả sản phẩm <br><textarea id="moTaSanPham" name="moTaSanPham"></textarea>
                 </div>
+                <span class="error " id="moTaSanPhamError"> Mô tả sản phẩm không được để trống</span><br>
                 <div class="infor">
                     <label for="anhSanPham">Ảnh SP</label>
-                    <input id="anhSanPham" type="file" name="anhSanPham" style="opacity: 0.6;" required>
-                </div><br>
+                    <input id="anhSanPham" type="file" name="anhSanPham" style="opacity: 0.6;">
+                </div>
+                <span class="error " id="anhSanPhamError"> Ảnh sản phẩm không được để trống</span><br>
+                <span class="error " id="anhKhongHopLeError"> File phải là ảnh (.jpg, .jpeg, .png)</span><br>
                 <div class="submit">
                     <a href="quanLySP.php" style="background-color: #1C8552; color : white;">Trở lại</a>
                     <button style="background-color: #24ACF2; color: white">Tạo sản phẩm</button>
@@ -93,6 +130,9 @@ checkSession(2);
             </form>
         </div>
     </div>
+
+    <!-- js -->
+    <script src="js/validTaoMoiSP.js"></script>
 </body>
 
 </html>

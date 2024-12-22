@@ -14,6 +14,17 @@ if (isset($_SESSION['tenDangNhap']) && $_SESSION["vaiTro"] == 2) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập - admin</title>
     <link rel="stylesheet" href="css/dangNhap.css">
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+
+        .red {
+            color: red;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -53,24 +64,30 @@ if (isset($_SESSION['tenDangNhap']) && $_SESSION["vaiTro"] == 2) {
     ?>
     <!-- end header -->
     <div class="box">
-        <form action="dangNhap.php" method="post">
+        <form id="formDangNhap" action="dangNhap.php" method="post">
             <h2>Đăng Nhập</h2>
-            <p style="color : red"><?php echo isset($_GET['loi']) ? "Đăng nhập thất bại" : " " ?></p>
-            <p style="color : #34A853"><?php echo isset($_GET['dang-xuat']) ? "Đăng xuất thành công" : " " ?></p>
-            <div class="dau_vao">
-                <p>Tên đăng nhập</p>
-                <input type="text" name="tenDangNhap" placeholder="Nhập tên đăng nhập của bạn">
-            </div>
+            <p style="color: red"><?php echo isset($_GET['loi']) ? "Đăng nhập thất bại" : " "; ?></p>
+            <p style="color: green"><?php echo isset($_GET['doi-mat-khau-ok']) ? "Đổi mật khẩu thành công" : " "; ?></p>
 
             <div class="dau_vao">
-                <p>Mật khẩu</p>
-                <input type="password" name="matKhau" placeholder="Nhập mật khẩu của bạn">
+                <label for="tenDangNhap">Tên đăng nhập</label>
+                <input type="text" id="tenDangNhap" placeholder="Nhập tên đăng nhập của bạn" name="tenDangNhap">
             </div>
+            <span class="error" id="tenDangNhapError">Tên đăng nhập không được để trống</span>
+
+            <div class="dau_vao">
+                <label for="matKhau">Mật Khẩu</label>
+                <input type="password" id="matKhau" placeholder="Nhập mật khẩu của bạn" name="matKhau">
+            </div>
+            <span class="error" id="matKhauError">Mật khẩu không được để trống</span>
 
             <button type="submit">Đăng Nhập</button>
-
         </form>
     </div>
+
+    <script src="js/validDangNhap.js">
+
+    </script>
     <!-- footer -->
 
     <!-- end footer -->

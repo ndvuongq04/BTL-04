@@ -12,6 +12,17 @@ checkSession(2);
     <title>Đăng Ký - admin</title>
 
     <link rel="stylesheet" href="css/dangKy.css">
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+
+        .red {
+            color: red;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -20,52 +31,79 @@ checkSession(2);
     <?php
     require('layout/header.php');
     require('../php/admin/saveObject.php');
-    // Kiểm tra nếu người dùng nhấn nút "Xóa"
+    // Kiểm tra nếu người dùng nhấn nút "Dăng ký"
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $tenDangNhap = $_POST['tenDangNhap'];
 
-        $hoVaTen = $_POST['ho_ten'];  // thực hiện hứng dữ liệu bằng cách gán chúng vào 1 biến khác
-        $soDienThoai = $_POST['so_dien_thoai'];
-        $diaChi = $_POST['dia_chi'];
-        $gioiTinh = $_POST['gioi_tinh'];
-        $tenDangNhap = $_POST['ten_dang_nhap'];
-        $matKhau = $_POST['mat_khau'];
-        $vaiTro = $_POST['vai_tro'];
-        $nhapLaiMatKhau = $_POST['nhap_lai_mat_khau'];
+        // Kiểm tra tên đăng nhập đã tồn tại trong cơ sở dữ liệu chưa
+        $sql = "SELECT * FROM nguoi_dung WHERE ten_dang_nhap = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("s", $tenDangNhap);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        //  gọi hàm của file saveObject.php
-        // hàm saveUserAtAdmin() thực hiện chức năng lưu 1 user xuống database
-        $ketQua = saveUserAtAdmin($con, $vaiTro, $hoVaTen, $gioiTinh, $soDienThoai, $diaChi, $tenDangNhap, $matKhau);
-        // Sau khi xóa xong, chuyển hướng trở lại trang quản lý khách hàng
-        header('Location: quanLyKH.php');
-        exit; // không thực hiện các câu lệnh phía sau 
+        if ($result->num_rows > 0) {
+            // Tên đăng nhập đã tồn tại
+            $error = "Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.";
+        } else {
+            $hoVaTen = $_POST['hoVaTen'];  // thực hiện hứng dữ liệu bằng cách gán chúng vào 1 biến khác
+            $soDienThoai = $_POST['soDienThoai'];
+            $diaChi = $_POST['diaChi'];
+            $gioiTinh = $_POST['gioiTinh'];
+            $tenDangNhap = $_POST['tenDangNhap'];
+            $matKhau = $_POST['matKhau'];
+            $vaiTro = $_POST['vai_tro'];
+
+            // $idVaiTro = '1'; // 1 : User 
+            $nhapLaiMatKhau = $_POST['nhapLaiMatKhau'];
+
+
+            //  gọi hàm của file saveObject.php
+            // hàm saveUserAtAdmin() thực hiện chức năng lưu 1 user xuống database
+            $ketQua = saveUserAtAdmin($con, $vaiTro, $hoVaTen, $gioiTinh, $soDienThoai, $diaChi, $tenDangNhap, $matKhau);
+            // Sau khi xóa xong, chuyển hướng trở lại trang quản lý khách hàng
+            header('Location: quanLyKH.php');
+            exit; // không thực hiện các câu lệnh phía sau 
+        }
     }
     ?>
     <!-- end header -->
     <div class="box">
         <h2>Đăng ký</h2>
-        <form action="dangKy.php" method="post">
+        <form id="formDangKyAdmin" action="dangKy.php" method="post">
             <div class="dau_vao">
                 <label for="hoVaTen">Họ và tên</label>
-                <input type="text" name="ho_ten" placeholder="Nhập số điện thoại" style="opacity: 0.6;" required>
+                <input type="text" id="hoVaTen" name="hoVaTen" placeholder="Nhập họ và tên" style="opacity: 0.6;">
             </div>
+            <span class="error " id="hoVaTenError">Họ và tên không được để trống</span>
+
             <div class="dau_vao">
                 <label for="soDienThoai">Số điện thoại</label>
-                <input type="text" name="so_dien_thoai" placeholder="Nhập số điện thoại">
+                <input type="text" id="soDienThoai" name="soDienThoai" placeholder="Nhập số điện thoại">
             </div>
+            <span class="error" id="soDienThoaiError"> Số điện thoại không được để trống</span>
+
             <div class="dau_vao">
-                <label for="tenDangNhap">Địa chỉ</label>
-                <input type="text" name="dia_chi" placeholder="Nhập địa chỉ" required>
+                <label for="diaChi">Địa chỉ</label>
+                <input type="text" name="diaChi" placeholder="Nhập địa chỉ">
             </div>
             <div class="gioi_tinh">
                 <p>Giới tính</p>
-                <input type="radio" name="gioi_tinh" value="NAM">Nam
-                <input type="radio" name="gioi_tinh" value="NU">Nữ
-                <input type="radio" name="gioi_tinh" value="KHAC">Khác
+                <input type="radio" name="gioiTinh" value="nam">Nam
+                <input type="radio" name="gioiTinh" value="nu">Nữ
+                <input type="radio" name="gioiTinh" value="khac">Khác
             </div>
+
             <div class="dau_vao">
                 <label for="tenDangNhap">Tên đăng nhập</label>
-                <input type="text" name="ten_dang_nhap" placeholder="Nhập tên đăng nhập" required>
+                <input type="text" id="tenDangNhap" name="tenDangNhap" placeholder="Nhập tên đăng nhập">
             </div>
+            <!-- Hiển thị thông báo lỗi nếu tên đăng nhập đã tồn tại -->
+
+            <span class="red"><?php echo empty($error) ? ' ' : $error ?></span>
+
+            <span class="error" id="tenDangNhapError"> Tên đăng nhập không được để trống</span>
+
             <div class="dau_vao">
                 <label for="vai-tro"> Vai trò</label><br>
                 <select id="vai-tro" name="vai_tro" style="opacity: 0.6;" required>
@@ -76,22 +114,26 @@ checkSession(2);
 
             <div class="dau_vao">
                 <label for="matKhau">Mật Khẩu</label>
-                <input type="password" name="mat_khau" placeholder="Nhập mật khẩu" required>
+                <input type="password" id="matKhau" name="matKhau" placeholder="Nhập mật khẩu">
             </div>
+            <span class="error" id="matKhauError"> Mật Khẩu không được để trống</span>
 
             <div class="dau_vao">
                 <label for="nhapLaiMatKhau">Nhập lại Mật Khẩu</label>
-                <input type="password" name="nhap_lai_mat_khau" placeholder="Nhập lại mật khẩu" required>
+                <input type="password" id="nhapLaiMatKhau" name="nhapLaiMatKhau" placeholder="Nhập lại mật khẩu">
             </div>
+            <span class="error" id="nhapLaiMatKhauError">Nhập lại mật Khẩu sai </span>
+
+
 
             <div class="btn-dangKy">
                 <button type="submit">Đăng ký</button>
             </div>
         </form>
     </div>
-    <!-- footer -->
+    <script src="js/validDangKy.js"></script>
 
-    <!-- end footer -->
+
 </body>
 
 </html>
