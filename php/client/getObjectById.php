@@ -35,3 +35,5 @@ function getObjectById($con, $tableName, $id)
     // Trả về mảng rỗng nếu có lỗi
     return null;
 }
+
+

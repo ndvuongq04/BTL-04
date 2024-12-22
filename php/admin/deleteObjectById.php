@@ -1,5 +1,5 @@
 <?php
-echo "hello from deleteObjectById.php <br>";
+// echo "hello from deleteObjectById.php <br>";
 
 require($_SERVER['DOCUMENT_ROOT'] . '/BTL-04/php/connectMysql.php');
 
@@ -28,4 +28,31 @@ function deleteObjectById($con, $tableName, $id)
 
     // Trả về mảng rỗng nếu có lỗi
     return false;
+}
+
+
+function deleteProductById($con, $id,)
+{
+    // update trangj tthai ve 0 chu ko xoa sp
+
+    // sql
+    $sql = "UPDATE san_pham SET trang_thai = 0  WHERE id = ? ";
+
+    // chuan bị cau lenh sql
+    $stmt = $con->prepare($sql); // true nếu sẵn sàng
+
+    if ($stmt) {
+
+        // gắn các tham số cho câu lệnh
+        $stmt->bind_param("i", $id);
+
+        // thuc thi câu lệnh
+        if ($stmt->execute()) {
+            return "đã cập nhật product vào database";
+        } else {
+            return "Lỗi không cập nhật được product vào database";
+        }
+    } else {
+        return "lỗi câu lệnh sql";
+    }
 }

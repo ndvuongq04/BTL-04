@@ -16,7 +16,7 @@ function hello()
 function getObjectByCondition($con, $tableName, $loai)
 {
     // Câu lệnh SQL
-    $sql = "SELECT * FROM $tableName WHERE loai = ?";
+    $sql = "SELECT * FROM $tableName WHERE loai = ? AND trang_thai = 1 ";
 
     // Mảng lưu kết quả
     $prds = [];

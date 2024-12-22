@@ -61,6 +61,8 @@
         <form action="dangNhap.php" method="post">
             <h2>Đăng Nhập</h2>
             <p style="color : red"><?php echo isset($_GET['loi']) ? "Đăng nhập thất bại" : " " ?></p>
+            <p style="color : green"><?php echo isset($_GET['doi-mat-khau-ok']) ? "Đổi mật khẩu thành công" : " " ?></p>
+
             <div class="dau_vao">
                 <p>Tên đăng nhập</p>
                 <input type="text" placeholder="Nhập tên đăng nhập của bạn" name="tenDangNhap" required>

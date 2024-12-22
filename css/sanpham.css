@@ -1,0 +1,43 @@
+/*  */
+.mid{
+    margin: 120px 250px;
+    
+}
+
+.tieude{
+    font-size: 30px;
+    margin-bottom: 10px 0;
+}
+
+.product{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);     /* căn 3 cột bằng nhau*/
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
+.info a{
+    color: #000;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 10px;
+    margin: 0px 5px;
+}
+
+.info img{
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 2px 2px;
+}
+
+.price{
+    padding: 10px;
+    margin: 5px;
+    color: rgba(0,0,0,0.5);
+}

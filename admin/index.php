@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
 require('../php/checkSession.php');
-checkSession();
+checkSession(2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +19,9 @@ checkSession();
     require('layout/header.php')
     ?>
     <!-- end header -->
-    <h1>Giới thiệu về trang admin <br>
+    <h1>
+        Giới thiệu về trang admin <br>
         Mô tả các chức năng của trang admin
-
     </h1>
     <h3 style="color:red"><?php echo $_SESSION['tenDangNhap'] ?> Đang đăng nhập</h3>
 </body>

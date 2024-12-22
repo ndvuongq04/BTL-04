@@ -4,7 +4,7 @@ require('php/checkSession.php');
 require('php/client/order.php');
 require('php/client/cart.php');
 require('php/client/getObjectById.php');
-checkSession();
+checkSessionClient();
 // echo "hello";
 
 /*

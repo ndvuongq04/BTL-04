@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
 require('../php/checkSession.php');
-checkSession();
+checkSession(2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +36,7 @@ checkSession();
                 <th>Id</th>
                 <th>Tên sản phẩm</th>
                 <th>Số lượng</th>
+                <th>Trạng thái</th>
                 <th>Loại</th>
                 <th>Hoạt động</th>
             </tr>
@@ -47,11 +48,17 @@ checkSession();
                     <td><?php echo $product['id'] ?></td>
                     <td><?php echo $product['ten'] ?></td>
                     <td><?php echo $product['so_luong'] ?></td>
+                    <td><?php echo $product['trang_thai'] == 1 ? 'Còn hàng' : 'Hết hàng' ?></td>
                     <td><?php echo $product['loai'] ?></td>
                     <td>
                         <a href="xemCT_SP.php?id=<?php echo $product['id'] ?>" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
                         <a href="capNhat_SP.php?id=<?php echo $product['id'] ?>" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
-                        <a href="xoa_SP.php?id=<?php echo $product['id'] ?>" style=" background-color: #DC3640; color : white;">Xóa</a>
+                        <?php if ($product['trang_thai'] == 1) {
+                        ?>
+                            <a href="xoa_SP.php?id=<?php echo $product['id'] ?>" style=" background-color: #DC3640; color : white;">Xóa</a>
+                        <?php
+                        } ?>
+
                     </td>
                 </tr>
             <?php

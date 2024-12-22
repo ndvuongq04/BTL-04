@@ -1,8 +1,9 @@
 <?php
 session_start();
-// nếu người dùng đăng nhập rồi -> chuyển về trang chủ
-if (isset($_SESSION['tenDangNhap'])) {
+// Nếu đã đăng nhập và là admin, chuyển về trang admin
+if (isset($_SESSION['tenDangNhap']) && $_SESSION["vaiTro"] == 2) {
     header('Location: index.php');
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -40,6 +41,7 @@ if (isset($_SESSION['tenDangNhap'])) {
             */
             session_start();
             $_SESSION["tenDangNhap"] = "$tenDangNhap";
+            $_SESSION["vaiTro"] = 2;
             header('Location: index.php');
             exit; // không thực hiện các câu lệnh phía sau
         } else {

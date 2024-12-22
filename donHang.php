@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
-// require('php/checkSession.php');
-// checkSession();
+require('php/checkSession.php');
+checkSessionClient();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +68,14 @@
             /* Áp dụng màu nền (một tông màu xám nhạt) cho các hàng chẵn được chọn */
             background-color: #dddddd;
         }
+
+        .don-hang-thong-bao {
+            color: red;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 200px;
+        }
     </style>
 </head>
 
@@ -75,15 +83,12 @@
     <?php
     require('layout/header.php');
     require('php/client/getObjectByCondition.php');
-
-
-
     $idNguoiDung = $_SESSION['idNguoiDung'];
     $donHang = getOrderByUser($con, $idNguoiDung);
 
 
     if ($donHang == null) {
-        echo "<h1>Bạn chưa có đơn hàng nào </h1>";
+        echo '<h1 class="don-hang-thong-bao">Bạn chưa có đơn hàng nào </h1>';
         exit;
     } else {
         // mảng lưu tất cả donHang của người dùng

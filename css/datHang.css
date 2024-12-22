@@ -1,18 +1,18 @@
-h1 {
+.trangDatHang{
+    margin: 120px 200px;
+}
+
+.trangDatHang h1{
     text-align: center;
+    padding: 10px;
 }
 
-.trang_chu {
-    margin: 0 240px;
-}
-
-.trang_chu .trai {
+.trangDatHang .trai {
     width: 50%;
     float: left;
 }
 
-.trang_chu .phai {
-
+.trangDatHang .phai {
     width: 50%;
     float: right;
 }
@@ -21,75 +21,73 @@ h1 {
 
 } */
 
-a {
+.trangDatHang a {
     text-decoration: none;
     color: #FA8C16;
 }
 
-.trang_chu .trai select {
+.trangDatHang .trai select {
     height: 40px;
     margin: 10px 0px;
     width: 420px;
 }
 
-.trang_chu .trai .dau_vao input {
+.trangDatHang .trai .dau_vao input {
     height: 20px;
     padding: 10px;
     margin: 10px 0px;
     width: 400px;
 }
 
-.trang_chu .trai .thanh_toan input {
+.trangDatHang .trai .thanh_toan input {
     height: 20px;
     width: 20px;
 }
 
-.trang_chu .trai .thanh_toan span {
+.trangDatHang .trai .thanh_toan span {
     font-size: 18px;
     padding: 5px;
     margin: 5px;
     line-height: 1.2;
 }
 
-.trang_chu .trai .dieu_khoan input {
+.trangDatHang .trai .dieu_khoan input {
     height: 20px;
     width: 20px;
     background-color: #FA8C16;
 }
 
-.trang_chu .trai .dieu_khoan span {
+.trangDatHang .trai .dieu_khoan span {
     font-size: 18px;
     padding: 5px;
     margin: 5px;
     line-height: 1.2;
 }
 
-.phai {
+.trangDatHang .phai {
     background-color: transparent;
     height: 500px;
-    /* box-shadow: rgba(0, 0, 0, 0.5); */
 }
 
-.phai form {
+.trangDatHang .phai form {
     box-shadow: rgba(0, 0, 0, 0.5);
     border-radius: 15px 15px 0px 0px;
     border: 1px solid #ddd;
-    /* background-color: #f6f6f6; */
 }
 
-.phai .trang_chinh {
+.trangDatHang .phai .trang_chinh {
     border: 1px solid #ccc;
     border-radius: 14px 14px 0px 0px;
     padding: 5px 10px;
 }
 
-.phai .ten_mon {
+.trangDatHang .phai .ten_mon {
     justify-content: space-between;
     display: flex;
     height: 70px;
 }
 
-.phai .ten_mon a {
+.trangDatHang .phai .ten_mon a {
     margin-top: 12px;
     font-size: 13px;
     border-radius: 20px;
@@ -99,12 +97,12 @@ a {
     background: #fff;
 }
 
-.phai .san_pham {
+.trangDatHang .phai .san_pham {
     justify-content: space-between;
     display: flex;
 }
 
-.phai .sua_xoa a {
+.trangDatHang .phai .sua_xoa a {
     font-size: 13px;
     border-radius: 20px;
     border: 1px solid #262626;
@@ -113,20 +111,20 @@ a {
     background: #fff;
 }
 
-.phai .sua_xoa a,
-.phai .ten_mon a {
+.trangDatHang .phai .sua_xoa a,
+.trangDatHang .phai .ten_mon a {
     border: 1px solid #ccc;
     padding: 8px;
     border-radius: 15px;
 }
 
 
-.phai .tinh_tien {
+.trangDatHang .phai .tinh_tien {
     justify-content: space-between;
     display: flex;
 }
 
-.phai .dat_hang {
+.trangDatHang .phai .dat_hang {
     padding-top: 15px;
     padding-left: 15px;
     background-color: #FA8C16;
@@ -135,7 +133,7 @@ a {
     border-radius: 0px 0px 15px 15px;
 }
 
-.phai .dat_hang button {
+.trangDatHang .phai .dat_hang button {
     font-size: 14px;
     border: none;
     padding: 15px 25px;
@@ -145,7 +143,7 @@ a {
     background-color: #fff;
 }
 
-.phai .xoa_don_hang {
+.trangDatHang .phai .xoa_don_hang {
     text-align: center;
     padding: 10px;
     font-size: 20px;

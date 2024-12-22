@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nước ép trái cây</title>
-    <link rel="stylesheet" href="css/nuocEpTraiCay.css">
+    <link rel="stylesheet" href="css/sanpham.css">
 </head>
 
 <body>

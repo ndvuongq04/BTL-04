@@ -1,5 +1,5 @@
 <?php
-echo "hello from orderDetail.php <br>";
+// echo "hello from orderDetail.php <br>";
 require($_SERVER['DOCUMENT_ROOT'] . '/BTL-04/php/connectMysql.php');
 // require('../connectMysql.php');
 

@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
 require('../php/checkSession.php');
-checkSession();
+checkSession(2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,9 +66,6 @@ checkSession();
                         <th>Vai trò</th>
                         <td><?php echo $Role['ten'] ?></td>
                     </tr>
-
-
-
                 </table>
                 <div class="submit">
                     <a href="quanLyKH.php" style="background-color: #1C8552; color : white;">Trở lại</a>

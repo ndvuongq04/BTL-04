@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
-// require('php/checkSession.php');
-// checkSession();
+require('php/checkSession.php');
+checkSessionClient();
 ?>
 <!DOCTYPE html>
 <html lang="en">

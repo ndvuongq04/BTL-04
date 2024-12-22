@@ -12,6 +12,11 @@
             color: red;
             display: none;
         }
+
+        .red {
+            color: red;
+
+        }
     </style>
 </head>
 
@@ -23,22 +28,36 @@
     require('php/client/saveObject.php');
     // Kiểm tra nếu người dùng nhấn nút "Xóa"
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $hoVaTen = $_POST['hoVaTen'];  // thực hiện hứng dữ liệu bằng cách gán chúng vào 1 biến khác
-        $soDienThoai = $_POST['soDienThoai'];
-        $diaChi = $_POST['diaChi'];
-        $gioiTinh = $_POST['gioiTinh'];
+        // Lấy tên đăng nhập từ form
         $tenDangNhap = $_POST['tenDangNhap'];
-        $matKhau = $_POST['matKhau'];
-        $idVaiTro = '1'; // 1 : User 
-        $nhapLaiMatKhau = $_POST['nhapLaiMatKhau'];
 
-        //  gọi hàm của file saveObject.php
-        // hàm saveUser() thực hiện chức năng lưu 1 user xuống database
-        $ketQua = saveUser($con, $idVaiTro,  $hoVaTen, $gioiTinh, $soDienThoai, $diaChi, $tenDangNhap, $matKhau);
-        // Sau khi xóa xong, chuyển hướng trở lại trang quản lý khách hàng
-        header('Location: dangNhap.php');
-        exit; // không thực hiện các câu lệnh phía sau
+        // Kiểm tra tên đăng nhập đã tồn tại trong cơ sở dữ liệu chưa
+        $sql = "SELECT * FROM nguoi_dung WHERE ten_dang_nhap = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("s", $tenDangNhap);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            // Tên đăng nhập đã tồn tại
+            $error = "Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.";
+        } else {
+            $hoVaTen = $_POST['hoVaTen'];  // thực hiện hứng dữ liệu bằng cách gán chúng vào 1 biến khác
+            $soDienThoai = $_POST['soDienThoai'];
+            $diaChi = $_POST['diaChi'];
+            $gioiTinh = $_POST['gioiTinh'];
+            $tenDangNhap = $_POST['tenDangNhap'];
+            $matKhau = $_POST['matKhau'];
+            $idVaiTro = '1'; // 1 : User 
+            $nhapLaiMatKhau = $_POST['nhapLaiMatKhau'];
+
+            //  gọi hàm của file saveObject.php
+            // hàm saveUser() thực hiện chức năng lưu 1 user xuống database
+            $ketQua = saveUser($con, $idVaiTro,  $hoVaTen, $gioiTinh, $soDienThoai, $diaChi, $tenDangNhap, $matKhau);
+            // Sau khi xóa xong, chuyển hướng trở lại trang quản lý khách hàng
+            header('Location: dangNhap.php');
+            exit; // không thực hiện các câu lệnh phía sau
+        }
     }
     ?>
     <!-- end header -->
@@ -54,7 +73,7 @@
                 <label for="soDienThoai">Số điện thoại</label>
                 <input type="text" id="soDienThoai" name="soDienThoai" placeholder="Nhập số điện thoại">
             </div>
-            <span class="error"> Số điện thoại không được để trống</span>
+            <span class="error" id="soDienThoaiError"> Số điện thoại không được để trống</span>
             <div class="dau_vao">
                 <label for="diaChi">Địa chỉ</label>
                 <input type="text" name="diaChi" placeholder="Nhập địa chỉ">
@@ -69,17 +88,22 @@
                 <label for="tenDangNhap">Tên đăng nhập</label>
                 <input type="text" id="tenDangNhap" name="tenDangNhap" placeholder="Nhập tên đăng nhập">
             </div>
-            <span class="error"> Tên đăng nhập không được để trống</span>
+            <!-- Hiển thị thông báo lỗi nếu tên đăng nhập đã tồn tại -->
+
+            <span class="red"><?php echo empty($error) ? ' ' : $error ?></span>
+
+
+            <span class="error" id="tenDangNhapError"> Tên đăng nhập không được để trống</span>
             <div class="dau_vao">
                 <label for="matKhau">Mật Khẩu</label>
                 <input type="password" id="matKhau" name="matKhau" placeholder="Nhập mật khẩu">
             </div>
-            <span class="error"> Mật Khẩu không được để trống</span>
+            <span class="error" id="matKhauError"> Mật Khẩu không được để trống</span>
             <div class="dau_vao">
                 <label for="nhapLaiMatKhau">Nhập lại Mật Khẩu</label>
                 <input type="password" id="nhapLaiMatKhau" name="nhapLaiMatKhau" placeholder="Nhập lại mật khẩu">
             </div>
-            <span class="error">Nhập lại mật Khẩu sai </span>
+            <span class="error" id="nhapLaiMatKhauError">Nhập lại mật Khẩu sai </span>
 
 
 

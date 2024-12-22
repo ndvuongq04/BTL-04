@@ -1,5 +1,5 @@
 <?php
-echo "hello from updateObjectById.php <br>";
+// echo "hello from updateObjectById.php <br>";
 require($_SERVER['DOCUMENT_ROOT'] . '/BTL-04/php/connectMysql.php');
 
 function hello()
@@ -31,11 +31,11 @@ function updateUserById($con, $id, $hoVaTen, $idVaiTro, $soDienThoai, $gioiTinh,
     }
 }
 
-function updateProductById($con, $id, $ten, $loai, $so_luong, $gia, $mo_ta, $anh)
+function updateProductById($con, $id, $ten, $loai, $so_luong, $gia, $mo_ta, $anh, $trangThai)
 {
 
     // sql
-    $sql = "UPDATE san_pham SET ten = ? , loai = ? ,  so_luong = ? , gia = ? , mo_ta = ? , anh = ? WHERE id = ? ";
+    $sql = "UPDATE san_pham SET ten = ? , loai = ? ,  so_luong = ? , gia = ? , mo_ta = ? , anh = ? , trang_thai = ?  WHERE id = ? ";
 
     // chuan bị cau lenh sql
     $stmt = $con->prepare($sql); // true nếu sẵn sàng
@@ -43,7 +43,7 @@ function updateProductById($con, $id, $ten, $loai, $so_luong, $gia, $mo_ta, $anh
     if ($stmt) {
 
         // gắn các tham số cho câu lệnh
-        $stmt->bind_param("ssiissi", $ten, $loai, $so_luong, $gia, $mo_ta, $anh, $id);
+        $stmt->bind_param("ssiissii", $ten, $loai, $so_luong, $gia, $mo_ta, $anh, $trangThai, $id);
 
         // thuc thi câu lệnh
         if ($stmt->execute()) {

@@ -44,102 +44,155 @@ a {
     text-align: center;
 }
 
-.main .header {
+.trang_chu {
     background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
     position: fixed;
-    height: 60px;
+    height: 85px;
     width: 100%;
     top: 0;
     right: 0;
     left: 0;
-    z-index: 0;
+    z-index: 1;
+    display: flex;
 }
 
-.main .header .nav {
-    align-items: center;
+.trang_chu .tieu_de {
+    width: 100%;
+    float: left;
     display: flex;
-    height: 100%;
-    padding: 19px 10px;
+}
+
+.trang_chu .tieu_de .nav {
+    justify-content: center;
+    display: flex;
+    padding: 0px 10px;
     margin: 0 88px;
     color: #191919;
     list-style: none;
 }
 
-.hidden {
+.tieu_de .logo {
     margin-right: 40px;
-    padding: 5px 0px 0px;
     width: 100%;
     text-transform: uppercase;
+    padding: 0px 10px;
+    font-size: 35px;
+    line-height: 60px;
+    font-weight: 650;
+    font-family: sans-serif;
 }
 
-.nav li {
-    padding: 19px 10px;
+.tieu_de .nav li {
+    padding: 0px 10px;
     justify-content: center;
     list-style: none;
     font-size: 16px;
-    line-height: 22px;
-    font-weight: 600;
-    font-family: 'SF Pro Text', sans-serif
+    /* line-height: 55px; */
+    font-weight: 650;
+    font-family: sans-serif;
 }
 
-.nav .subnav {
+.tieu_de .nav li a {
+    color: #000;
+    text-decoration: none;
+    line-height: 46px;
+    display: block;
+}
+
+.trang_chu .xac_thuc {
+    display: flex;
+    padding: 5px;
+    margin-right: 120px;
+}
+
+.trang_chu .xac_thuc:hover .icon {
+    cursor: pointer;
+}
+
+/* .trang_chu .icon {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+  
+    cursor: pointer;
+}
+
+.trang_chu .icon:hover .sub_icon {
+    cursor: pointer;
+    display: block;
+} */
+
+.trang_chu .icon {
+    position: relative;
+    display: inline-block;
+    padding: 30px;
+    margin-top: -30px;
+    /* Tăng vùng tương tác */
+    cursor: pointer;
+}
+
+.trang_chu .icon:hover .sub_icon {
+    display: block;
+    /* Hiển thị menu con khi hover */
+}
+
+.icon .sub_icon {
+    display: inline-block;
+    width: 100%;
+}
+
+.icon li {
+    margin-left: -9px;
+}
+
+.icon li,
+.icon li a {
+    display: inline-block;
+    width: 100%;
+}
+
+.icon li:hover a {
+    background-color: #ccc;
+}
+
+.trang_chu .xac_thuc .sub_icon {
     display: none;
+    padding: 0 12px;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.menu {
-    margin: 0 15px 40px 15px;
-    margin: 0 88px;
+.trang_chu .xac_thuc .sub_icon a {
+    text-decoration: none;
+    line-height: 46px;
+    color: #000;
 }
 
-.main .menu .box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* Tạo 2 cột bằng nhau */
-    padding: 20px;
+.trang_chu .xac_thuc .sub_icon li {
+    list-style: none;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
 }
 
-.menu .menu_banner {
-    margin: 0px 15px 40px;
-    grid-column: span 2;
-}
-
-.menu .menu_banner img {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-}
-
-.menu .menu_item {
-    margin: 0px 15px 40px;
-}
-
-.menu .menu_item img {
-    width: 100%;
-    border-radius: 15px;
-}
-
-.menu .menu_item .h3 {
-    margin: 0px 0px 4px;
-}
-
-.looking {
+/* tim_kiem */
+.tim_kiem {
     margin: 0 88px;
     display: flex;
-    padding: 48px 0px 45px 0px;
-    background: url("./img/download.webp");
 }
 
-.looking .left {
+.tim_kiem .left {
     width: 50%;
 }
 
-.looking .right {
+.tim_kiem .right {
     width: 50%;
 }
 
-.looking .right .intro {
+.tim_kiem .right .gioi_thieu {
     padding: 15px 0;
     font-size: 16px;
     font-weight: 400;
@@ -149,193 +202,187 @@ a {
     margin-bottom: 16px;
 }
 
-.right-btn .btn {
+.tim_kiem .right .btn {
     border: none;
     background: #778B37;
     color: #ffffff;
     height: 40px;
-    width: 100%;
+    width: 500px;
+    margin-left: 10px;
     border-radius: 10px;
     padding: 0 15px;
 }
 
-.btn:hover {
+.tim_kiem .btn:hover {
     cursor: pointer;
+    opacity: 0.5;
 }
 
 
-.slider {
+/* Cửa Hàng */
+.cua_hang {
     display: flex;
     margin-top: 40px;
 }
 
-.left-slider {
+.cua_hang .left-cua_hang {
     width: 50%;
-    margin-left: 100px;
     padding: 125px 20px 0px;
 }
 
-.left-slider h3 {
-    font-size: 28px;
+
+.cua_hang .left-cua_hang h3 {
+    font-size: 30px;
     color: #000000D9;
-    font-family: 'SF Pro Display', sans-serif;
     font-weight: 600;
     max-width: 75%;
+    margin: 20px 0px 20px 120px;
 }
 
-.left-slider button {
-    background: #C8070F;
-    width: 290px;
-}
 
-.left-slider button:hover {
-    cursor: pointer;
-}
-
-.store_slider_des {
-    font-size: 16px;
+.cua_hang .left-cua_hang p {
+    font-size: 20px;
+    margin: 20px 0px 20px 120px;
     line-height: 24px;
     max-width: 75%;
-    height: 115px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 5px 0;
 }
 
-.right-slider {
+
+.cua_hang .left-cua_hang button {
+    background: #C8070F;
+    width: 400px;
+    color: #ffffff;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    margin-left: 120px;
+}
+
+
+.cua_hang .left-cua_hang button:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+
+.cua_hang .right-cua_hang {
     width: 60%;
 }
 
-.right-slider img {
+
+.cua_hang .right-cua_hang img {
     width: 100%;
     height: 100%;
     border-radius: 15px;
 }
 
-.container {
+/* Tin Tức */
+
+.tin_tuc {
     background: #FFF7E6;
-    padding: 0px 0px 123px;
+    padding-bottom: 140px;
+    width: 100%;
 }
 
-.container .content {
-    margin: 0px 77px;
-    padding: 0 15px;
+.tin_tuc .noi_dung {
+    margin: 0px 88px;
+    /* padding: 16px 0px; */
 }
 
-.coffeeholic {
+.tin_tuc .blog {
     display: flex;
+    margin-left: 77px;
 }
 
-.content h2 {
+.tin_tuc .noi_dung h2 {
     text-align: center;
     margin: 40px 0px 0px;
     padding-top: 40px;
     font-size: 28px;
 }
 
-.content-item {
-    padding: 0px 20px;
+.tin_tuc .blog_tin_tuc {
+    font-size: 30px;
+    border-left: 4px;
+    margin: 24px;
+    padding: 5px;
+    margin-left: 77px;
 }
 
-.content-item-img {
-    width: 100%;
-    height: 180px;
+.tin_tuc .noi_dung-item {
+    padding: 16px 0;
+    margin: 0 15px;
+}
+
+.tin_tuc .content-item-img {
     border-radius: 5px;
-    display: block;
+    width: 380px;
+    height: 180px;
 }
 
-.content-item-body {
-    font-size: 15px;
+.tin_tuc .content-item-body {
+    font-size: 16px;
     left: 0;
     top: 0;
 }
 
-.content-title {
-    border-left: 4px;
-    padding-left: 12px;
-    margin: 24px 0px;
-}
 
+/* Footer */
 .footer {
     color: #fff;
     background: #000000D9;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
-.top-footer {
+.footer .top-footer {
+    font-size: 13px;
+    font-weight: 400;
     display: flex;
+    margin: 0px 77px;
+    padding: 5px;
 }
 
-.introduction {
+.footer .noi_dung {
     margin-top: 50px;
     margin-left: 88px;
     width: 25%;
     list-style: none;
 }
 
-.introduction h3 {
+.footer .top-footer h4 {
     margin-left: 10px;
-    font-size: 14px
-}
-
-.introduction ul li {
-    padding: 10px;
-    list-style: none;
-}
-
-.introduction ul li a {
-    font-size: 12px;
-    color: #fff;
-}
-
-.clause {
-    margin-top: 50px;
-    width: 25%;
-    list-style: none;
-}
-
-.clause h3 {
-    margin-left: 10px;
-    font-size: 14px
-}
-
-.clause ul li {
-    list-style: none;
-    padding: 10px;
-}
-
-.clause ul li a {
-    font-size: 12px;
-    color: #fff;
-}
-
-.address {
-    margin-top: 50px;
-    width: 25%;
-    padding: 0 15px;
-}
-
-.address p {
-    padding: 0px 15px;
     margin-bottom: 15px;
-    font-size: 12px;
+    font-size: 18px;
 }
 
-.video {
-    margin-top: 50px;
-    width: 25%;
+.footer .top-footer a {
+    font-size: 13px;
+    color: #fff;
 }
 
-.mid-footer {
+.footer .top-footer ul li {
+    padding: 10px;
+    list-style: none;
+}
+
+.footer .mid-footer {
     background: color;
     margin: 25px 89px;
 }
 
-
-.bottom-footer {
+.footer .bottom-footer {
     margin-top: 15px;
     margin-left: 90px;
     padding: 5px 0px 45px 0px;
     color: #fff;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.8;
+}
+
+.footer .bottom-footer p {
+    margin-left: 77px;
 }

@@ -25,7 +25,8 @@ function checkLoginAdmin($con, $username, $password)
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // có tài khoản trùng với thông tin trên 
+            $row = $result->fetch_assoc();
+            $_SESSION["vaiTro"] = 2; // Lưu vai trò Admin vào session
             return true;
         } else {
             return false;
@@ -40,33 +41,26 @@ function checkLoginAdmin($con, $username, $password)
 // admin và user đều có thể vào
 function checkLogin($con, $username, $password)
 {
-    // Câu lệnh SQL
-    // admin có id = 2 ; user có id = 1
-    $sql = "SELECT * FROM nguoi_dung WHERE ten_dang_nhap = ? and mat_khau = ?";
+    $sql = "SELECT * FROM nguoi_dung WHERE ten_dang_nhap = ? AND mat_khau = ?";
 
-    // Chuẩn bị câu lệnh
+    // Chuẩn bị câu lệnh SQL
     $stmt = $con->prepare($sql);
 
     // Kiểm tra câu lệnh đã sẵn sàng chưa
     if ($stmt) {
-
-        // gán các tham số vào câu lệnh
         $stmt->bind_param("ss", $username, $password);
-
-        // Thực thi câu lệnh SQL
         $stmt->execute();
 
-        // Lấy kết quả
         $result = $stmt->get_result();
-
         if ($result->num_rows > 0) {
-            // có tài khoản trùng với thông tin trên 
+            // Lấy thông tin người dùng
+            $row = $result->fetch_assoc();
+            // Lưu vai trò vào session
+            $_SESSION["vaiTro"] = $row['id_vai_tro']; // Lưu vai trò của người dùng
             return true;
         } else {
-            return false;
+            return false; // Nếu không có tài khoản
         }
     }
-
-    // Trả về false nếu có lỗi
     return false;
 }

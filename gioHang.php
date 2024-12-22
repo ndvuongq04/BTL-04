@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
-// require('php/checkSession.php');
-// checkSession();
+require('php/checkSession.php');
+checkSessionClient();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +62,14 @@
             cursor: pointer;
             opacity: 0.6;
         }
+
+        .gio-hang-thong-bao {
+            color: red;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 200px;
+        }
     </style>
 </head>
 
@@ -77,13 +85,17 @@
             -> lấy cart -> lấy cartDetails
         - xóa sản
     */
-    // session_start(); : da goi trong header roi
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start(); // Chỉ gọi session_start nếu chưa có session nào được khởi động
+    }
 
     $idNguoiDung = $_SESSION['idNguoiDung'];
     $gioHang = checkCart($con, $idNguoiDung);
     if ($gioHang == null) {
-        echo ">>>>>>>>>>>> không lấy được giỏ hàng";
-        header('Location: caPhe.php');
+        // echo ">>>>>>>>>>>> không lấy được giỏ hàng";
+        // header('Location: caPhe.php');
+        echo '<h1 class="gio-hang-thong-bao">Bạn chưa thêm sản phẩm nào vào giỏ hàng</h1>';
+
         exit;
     } else {
         // mảng lưu tất cả sp của người dùng 
@@ -120,20 +132,20 @@
                             <a href="xemChiTietSP.php?id=<?php echo $sp['id'] ?>"><?php echo $sp['ten'] ?></a>
                         </td>
                         <td><?php echo $cTGH['so_luong'] ?> </td>
-                        <td><?php echo ($cTGH['so_luong'] * $cTGH['gia']) ?> đ</td>
+                        <td><?php echo number_format($cTGH['so_luong'] * $cTGH['gia']) ?> VNĐ</td>
+
                         <td>
                             <a href="php/client/deleteProduct.php?idsp=<?php echo $sp['id'] ?>&idgh=<?php echo $gioHang['id'] ?>"
                                 style=" background-color: #DC3640; color : white;">Xóa</a>
                         </td>
                     </tr>
-
                 <?php
                 } ?>
                 <tr>
                     <td colspan="">
                         <h3>Tổng tiền :</h3>
                     </td>
-                    <td colspan="3" style="text-align: center;"> <?php echo $tongTien ?> đ </td>
+                    <td colspan="3" style="text-align: center;"><?php echo number_format($tongTien, 0, ',', '.') . 'VNĐ'; ?></td>
                     <td><a href="trangDatHang.php?id=<?php echo $gioHang['id'] ?>" class="pay">Thanh toán</a></td>
                 </tr>
 

@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
 require('../php/checkSession.php');
-checkSession();
+checkSession(2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@ checkSession();
                 <p>Bạn chắc chắn muốn xóa đơn hàng này chứ ?</p>
             </div>
             <div class="del">
-                <a href="quanLyDH.php" style="background-color: #1C8552; color : white;">Trở lại</a>
+                <a href="quanLyDH.php" class="back" style="background-color: #1C8552; color : white;">Trở lại</a>
                 <a href="" style="background-color: #c5303a; color : white;">Xóa</a>
             </div>
         </div>

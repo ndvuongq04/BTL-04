@@ -11,6 +11,12 @@ var formDangKy = document.getElementById('formDangKy');
 
 // lấy thẻ hiển thị lỗi
 var hoVaTenError = document.getElementById('hoVaTenError');
+var soDienThoaiError = document.getElementById('soDienThoaiError');
+var tenDangNhapError = document.getElementById('tenDangNhapError');
+var matKhauError = document.getElementById('matKhauError');
+var nhapLaiMatKhauError = document.getElementById('nhapLaiMatKhauError');
+
+
 
 
 // lắng nghe sự kiện form
@@ -24,16 +30,59 @@ formDangKy.addEventListener("submit", function (e) { // onsubmit -> trang sẽ l
         // hiển thị lỗi
         check = false; // đánh dấu là có lỗi
         hoVaTenError.style.display = "block";
-
     }
+    else { // có dữ liệu rồi
+        // ẩn lỗicheck = false ;
+        hoVaTenError.style.display = "none";
+    }
+
+    if (soDienThoai.value.trim() === "") { // chưa có dữ liệu
+        // hiển thị lỗi
+        check = false; // đánh dấu là có lỗi
+        soDienThoaiError.style.display = "block";
+    } else { // có dữ liệu rồi
+        // ẩn lỗicheck = false ;
+        soDienThoaiError.style.display = "none";
+    }
+
+    if (tenDangNhap.value.trim() === "") { // chưa có dữ liệu
+        // hiển thị lỗi
+        check = false; // đánh dấu là có lỗi
+        tenDangNhapError.style.display = "block";
+    } else { // có dữ liệu rồi
+        // ẩn lỗicheck = false ;
+        tenDangNhapError.style.display = "none";
+    }
+
+    if (matKhau.value.trim() === "") { // chưa có dữ liệu
+        // hiển thị lỗi
+        check = false; // đánh dấu là có lỗi
+        matKhauError.style.display = "block";
+    } else { // có dữ liệu rồi
+        // ẩn lỗicheck = false ;
+        matKhauError.style.display = "none";
+    }
+
+    if (nhapLaiMatKhau.value.trim() === "") { // chưa có dữ liệu
+        // hiển thị lỗi
+        check = false; // đánh dấu là có lỗi
+        nhapLaiMatKhauError.style.display = "block";
+    } else { // có dữ liệu rồi
+        // ẩn lỗicheck = false ;
+        nhapLaiMatKhauError.style.display = "none";
+    }
+
+    // kiểm tra mật khẩu và nhập lại mật khẩu
+    if (matKhau.value !== nhapLaiMatKhau.value) {
+        check = false;
+        nhapLaiMatKhauError.style.display = "block";
+        nhapLaiMatKhauError.innerHTML = "Mật khẩu nhập lại không khớp với mật khẩu ";
+    }
+
 
     if (!check) {
         //ngăn chặn sự kiện submit trang khi có lỗi
         e.preventDefault();
     }
     // nếu không có lỗi -> check = true -> form vẫn sẽ được submit 
-
-
-
-
 })

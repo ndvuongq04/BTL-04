@@ -1,5 +1,5 @@
 <?php
-echo "hello from getObjectById.php <br>";
+// echo "hello from getObjectById.php <br>";
 // require('../connectMysql.php');
 require($_SERVER['DOCUMENT_ROOT'] . '/BTL-04/php/connectMysql.php');
 

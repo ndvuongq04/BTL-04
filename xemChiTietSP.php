@@ -5,11 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xem chi tiết</title>
-    <link rel="stylesheet" href="css/chitietSP.css?v=1.1">
+    <link rel="stylesheet" href="css/chitietSP.css">
+    <style>
+        .so_luong input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #e9e9e9;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
 </head>
 
 <body>
-
     <!-- header -->
     <?php
     require('layout/header.php');
@@ -28,21 +39,16 @@
         </div>
         <div class="chi_tiet_img">
             <h1><?php echo $sanPham['ten'] ?></h1>
-            <h2><?php echo $sanPham['gia'] ?></h2>
-            <!-- <p>Chọn size(bắt buộc)</p>
 
-            <div class="chon_size">
-                <button>Nhỏ +4.000</button>
-                <button>Vừa + 4.000đ</button>
-                <button>Lớn + 14.000đ</button>
-            </div> -->
+            <h2 style="margin:15px 0px"><?php echo number_format($sanPham['gia'],0,',','.').' '.'VNĐ'; ?></h2>
+            
 
             <form action="themSanPham.php" method="post">
                 <input type="hidden" name="idSanPham" value="<?php echo $sanPham['id'] ?>">
                 <input type="hidden" name="giaSanPham" value="<?php echo $sanPham['gia'] ?>">
                 <div class="so_luong">
                     <p>Số Lượng</p>
-                    <input type="number" name="soLuong" value="1" width="10px" disabled>
+                    <input type="number" name="soLuong" value="1" disabled>
                 </div>
 
                 <div class="dat_hang">
@@ -61,18 +67,6 @@
             <?php echo $sanPham['mo_ta'] ?>
         </p>
     </div>
-
-    <!-- <script>
-        function thay_doi(so) {
-            const dau_vao = document.getElementById("so");
-            let so_hien_tai = parseInt(dau_vao.value);
-            dau_vao.value = so_hien_tai + so;
-        }
-    </script> -->
-
-    <!-- footer -->
-
-    <!-- Phúc , Tường  -->
 
     <?php
     require('layout/footer.php')

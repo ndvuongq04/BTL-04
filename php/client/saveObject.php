@@ -1,5 +1,5 @@
 <?php
-echo "hello from save_object.php <br>";
+// echo "hello from save_object.php <br>";
 require($_SERVER['DOCUMENT_ROOT'] . '/BTL-04/php/connectMysql.php');
 
 // $con thuộc file connectMysql.php

@@ -19,20 +19,6 @@
     margin: 0px 30px;
 }
 
-/* .chon_size button{
-    height: 40px;
-    width: 120px;
-    margin: 5px;
-    background-color: #fff;
-    border: 1px solid#000;
-    border-radius: 7px;
-}
-
-.chon_size button:hover{
-    cursor: pointer;
-    background-color: #E57905;
-} */
-
 .so_luong .so_input {
     display: flex;
     width: 100px;

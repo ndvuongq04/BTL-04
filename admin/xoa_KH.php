@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
 require('../php/checkSession.php');
-checkSession();
+checkSession(2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,7 @@ checkSession();
             <div class="del">
                 <form action="xoa_KH.php" method="POST">
                     <input type="hidden" name="idCheck" , value="<?php echo $_GET['id'] ?>">
-                    <a href="quanLyKH.php" style="background-color: #1C8552; color : white; padding: 8px 19px;">Trở lại</a>
+                    <a href="quanLyKH.php" class="back" style="background-color: #1C8552; color : white; padding: 8px 19px;">Trở lại</a>
                     <button type="submit" style="background-color: #c5303a; color : white;">
                         Xóa
                     </button>

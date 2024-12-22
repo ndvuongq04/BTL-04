@@ -1,7 +1,7 @@
 <?php
 // ktra người dùng đăng nhập hay chưa
 require('../php/checkSession.php');
-checkSession();
+checkSession(2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +40,8 @@ checkSession();
         $soLuong = $_POST['soLuong'];
         $gia = $_POST['gia'];
         $moTa = $_POST['moTaSanPham'];
+        $trangThai = $_POST['trang_thai'];
+
 
 
         $anhCu = $_POST['anhCu'];
@@ -57,7 +59,7 @@ checkSession();
         }
 
         // gọi hàm cập nhật sp
-        updateProductById($con, $idProduct, $ten, $loai, $soLuong, $gia, $moTa, $tenAnh);
+        updateProductById($con, $idProduct, $ten, $loai, $soLuong, $gia, $moTa, $tenAnh, $trangThai);
         header('Location: quanLySP.php');
     }
 
@@ -86,6 +88,15 @@ checkSession();
                             <option value="CaPhe" <?php echo $sanPham['loai'] == 'CaPhe' ? 'selected' : ' ' ?>>Cà phê</option>
                             <option value="Khac" <?php echo $sanPham['loai'] == 'Khac' ? 'selected' : ' ' ?>>Khác</option>
                         </select>
+
+                    </div>
+                    <div class="infor">
+                        <label for="trang-thai">Trạng thái</label><br>
+                        <select name="trang_thai" id="loai">
+                            <option value="1" <?php echo $sanPham['trang_thai'] == 1 ? 'selected' : '  ' ?>>Còn hàng </option>
+                            <option value="0" <?php echo $sanPham['trang_thai'] == 0 ? 'selected' : ' ' ?>>Hết hàng</option>
+
+                        </select>
                     </div>
                 </div>
                 <div class="gr">
@@ -110,6 +121,7 @@ checkSession();
                 </div><br>
                 <div class="infor">
                     <img src="img/<?php echo $sanPham['anh'] ?>" width="100px" height="100px" alt="">
+
                 </div>
 
                 <div class="submit">
