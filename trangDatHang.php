@@ -160,6 +160,16 @@ checkSessionClient();
             color: #FA8C16;
             background-color: #fff;
         }
+
+        .error {
+            color: red;
+            display: none;
+        }
+
+        .red {
+            color: red;
+
+        }
     </style>
 </head>
 
@@ -181,15 +191,25 @@ checkSessionClient();
     ?>
         <div class="trangDatHang">
             <h1>Xác nhận đơn hàng</h1>
-            <form action="thanhToan.php" method="post">
+            <form id="formXacNhan" action="thanhToan.php" method="post">
                 <div class="trai">
                     <div>
                         <h3>Giao hàng</h3>
                     </div>
                     <div class="dau_vao">
-                        <input type="text" placeholder="Tên người nhận" name="tenNguoiNhan"><br>
-                        <input type="text" placeholder="Số điện thoại" name="soDienThoai"><br>
-                        <input type="text" placeholder="Địa chỉ nhận hàng" name="diaChi"><br>
+                        <div>
+                            <input type="text" id="tenNguoiNhan" placeholder="Tên người nhận" name="tenNguoiNhan"><br>
+                            <span class="error " id="tenNguoiNhanError"> Họ và tên không được để trống</span>
+                        </div>
+                        <div>
+                            <input type="text" id="soDienThoai" placeholder="Số điện thoại" name="soDienThoai"><br>
+                            <span class="error " id="soDienThoaiError"> Số điện thoại không được để trống</span>
+                        </div>
+                        <div>
+                            <input type="text" id="diaChi" placeholder="Địa chỉ nhận hàng" name="diaChi"><br>
+                            <span class="error " id="diaChiError"> Địa chỉ không được để trống</span>
+                        </div>
+
                     </div>
 
                     <div class="thanh_toan">
@@ -257,7 +277,59 @@ checkSessionClient();
         </div>
 
     <?php } ?>
+    <script>
+        var tenNguoiNhan = document.getElementById('tenNguoiNhan');
+        var soDienThoai = document.getElementById('soDienThoai');
+        var diaChi = document.getElementById('diaChi');
 
+        var formXacNhan = document.getElementById('formXacNhan');
+
+        // lấy thẻ hiển thị lỗi
+        var tenNguoiNhanError = document.getElementById('tenNguoiNhanError');
+        var soDienThoaiError = document.getElementById('soDienThoaiError');
+        var diaChiError = document.getElementById('diaChiError');
+
+        // lắng nghe sự kiện form
+        formXacNhan.addEventListener("submit", function(e) { // onsubmit -> trang sẽ load như bthg 
+            // Biến kiểm tra xem có lỗi hay không
+            var check = true;
+
+            // Validate dữ liệu đầu vào
+            // tenNguoiNhan.value.trim() : loại bỏ khoảng trắng đầu cuối
+            if (tenNguoiNhan.value.trim() === "") { // chưa có dữ liệu
+                // hiển thị lỗi
+                check = false; // đánh dấu là có lỗi
+                tenNguoiNhanError.style.display = "block";
+            } else { // có dữ liệu rồi
+                // ẩn lỗicheck = false ;
+                tenNguoiNhanError.style.display = "none";
+            }
+
+            if (soDienThoai.value.trim() === "") { // chưa có dữ liệu
+                // hiển thị lỗi
+                check = false; // đánh dấu là có lỗi
+                soDienThoaiError.style.display = "block";
+            } else { // có dữ liệu rồi
+                // ẩn lỗicheck = false ;
+                soDienThoaiError.style.display = "none";
+            }
+
+            if (diaChi.value.trim() === "") { // chưa có dữ liệu
+                // hiển thị lỗi
+                check = false; // đánh dấu là có lỗi
+                diaChiError.style.display = "block";
+            } else { // có dữ liệu rồi
+                // ẩn lỗicheck = false ;
+                diaChiError.style.display = "none";
+            }
+
+            if (!check) {
+                //ngăn chặn sự kiện submit trang khi có lỗi
+                e.preventDefault();
+            }
+            // nếu không có lỗi -> check = true -> form vẫn sẽ được submit 
+        })
+    </script>
 
 
 

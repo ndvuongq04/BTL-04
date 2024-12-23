@@ -11,6 +11,12 @@ checkSession(2);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật đơn hàng</title>
     <link rel="stylesheet" href="css/update.css">
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -45,11 +51,12 @@ checkSession(2);
             <h2>Cập nhật đơn hàng</h2>
         </div>
         <div class="main">
-            <form action="capNhat_DH.php" method="post">
+            <form action="capNhat_DH.php" method="post" id="formCapNhat">
                 <div class="gr">
                     <div class="infor">
                         <label for="address">Địa chỉ</label>
                         <input type="text" id="address" name="diaChi" style="opacity: 0.6;" value=" <?php echo $donHang['dia_chi'] ?>">
+                        <span class="error" id="diaChiError">Địa chỉ không được để trống.</span>
                     </div>
                     <div class="infor">
                         <label for="mode"> Trạng thái</label>
@@ -75,6 +82,28 @@ checkSession(2);
             </form>
         </div>
     </div>
+    <script>
+        // Xử lý kiểm tra đầu vào bằng JavaScript
+        const form = document.getElementById('formCapNhat');
+        const address = document.getElementById('address');
+        const diaChiError = document.getElementById('diaChiError');
+
+        form.addEventListener('submit', function(e) {
+            let check = true;
+
+            if (address.value.trim() === '') {
+                check = false;
+                diaChiError.style.display = 'block';
+                diaChiError.textContent = 'Địa chỉ không được để trống.';
+            } else {
+                diaChiError.style.display = 'none';
+            }
+
+            if (!check) {
+                e.preventDefault(); // Ngăn chặn submit nếu có lỗi
+            }
+        });
+    </script>
 </body>
 
 </html>

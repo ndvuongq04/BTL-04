@@ -11,6 +11,12 @@ checkSession(2);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật sản phẩm</title>
     <link rel="stylesheet" href="css/update.css">
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -70,31 +76,37 @@ checkSession(2);
             <h2>Cập nhật sản phẩm</h2>
         </div>
         <div class="main">
-            <form action="capNhat_SP.php" method="post" enctype="multipart/form-data">
+            <form id="formCapNhatSP" action="capNhat_SP.php" method="post" enctype="multipart/form-data">
                 <div class="gr">
                     <div class="infor">
                         <div class="">
                             <input type="hidden" name="idCheck" value="<?php echo $sanPham['id'] ?>" placeholder="" style="opacity: 0.6;" required>
                         </div>
                         <label for="name">Tên sản phẩm</label>
-                        <input type="text" id="name" name="tenSanPham" value="<?php echo $sanPham['ten'] ?>" style="opacity: 0.6;" required>
+                        <input type="text" id="name" name="tenSanPham" value="<?php echo $sanPham['ten'] ?>" style="opacity: 0.6;">
+                        <span class="error" id="tenError">Tên sản phẩm không được để trống</span> 
                     </div>
                     <div class="infor">
                         <label for="loai">Phân loại</label><br>
                         <select name="loai" id="loai">
-                            <option value="Tra" <?php echo $sanPham['loai'] == 'Tra' ? 'selected' : '  ' ?>>Trà</option>
-                            <option value="NuocEp" <?php echo $sanPham['loai'] == 'NuocEp' ? 'selected' : ' ' ?>>Nước ép trái cây</option>
-                            <option value="DoUongCoGa" <?php echo $sanPham['loai'] == 'DoUongCoGa' ? 'selected' : ' ' ?>>Đồ uống có ga</option>
-                            <option value="CaPhe" <?php echo $sanPham['loai'] == 'CaPhe' ? 'selected' : ' ' ?>>Cà phê</option>
-                            <option value="Khac" <?php echo $sanPham['loai'] == 'Khac' ? 'selected' : ' ' ?>>Khác</option>
+                            <option value="Tra" <?php echo $sanPham['loai']=='Tra' ? 'selected' : '  ' ?>>Trà</option>
+                            <option value="NuocEp" <?php echo $sanPham['loai']=='NuocEp' ? 'selected' : ' ' ?>>Nước ép
+                                trái cây</option>
+                            <option value="DoUongCoGa" <?php echo $sanPham['loai']=='DoUongCoGa' ? 'selected' : ' ' ?>
+                                >Đồ uống có ga</option>
+                            <option value="CaPhe" <?php echo $sanPham['loai']=='CaPhe' ? 'selected' : ' ' ?>>Cà phê
+                            </option>
+                            <option value="Khac" <?php echo $sanPham['loai']=='Khac' ? 'selected' : ' ' ?>>Khác</option>
                         </select>
 
                     </div>
                     <div class="infor">
                         <label for="trang-thai">Trạng thái</label><br>
                         <select name="trang_thai" id="loai">
-                            <option value="1" <?php echo $sanPham['trang_thai'] == 1 ? 'selected' : '  ' ?>>Còn hàng </option>
-                            <option value="0" <?php echo $sanPham['trang_thai'] == 0 ? 'selected' : ' ' ?>>Hết hàng</option>
+                            <option value="1" <?php echo $sanPham['trang_thai']==1 ? 'selected' : '  ' ?>>Còn hàng
+                            </option>
+                            <option value="0" <?php echo $sanPham['trang_thai']==0 ? 'selected' : ' ' ?>>Hết hàng
+                            </option>
 
                         </select>
                     </div>
@@ -102,16 +114,24 @@ checkSession(2);
                 <div class="gr">
                     <div class="infor">
                         <label for="quantify">Số lượng</label>
-                        <input type="number" id="quantify" name="soLuong" value="<?php echo $sanPham['so_luong'] ?>" style="opacity: 0.6;" required>
+                        <input type="number" id="quantify" name="soLuong" value="<?php echo $sanPham['so_luong'] ?>" style="opacity: 0.6;">
+                        <span class="error" id="soLuongError"> Số lượng không được để trống</span>
+                        <span class="error" id="soLuongAmError"> Số lượng phải lớn hơn 0</span>
+                        
                     </div>
                     <div class="infor">
                         <label for="price">Giá</label>
-                        <input type="number" id="price" name="gia" value="<?php echo $sanPham['gia'] ?>" style="opacity: 0.6;" required>
+                        <input type="number" id="price" name="gia" value="<?php echo $sanPham['gia'] ?>" style="opacity: 0.6;">
+                        <span class="error" id="giaError"> Giá sản phẩm không được để trống</span>
+                        <span class="error" id="giaAmError"> Giá sản phẩm phải lớn hơn 0</span>
                     </div>
                 </div>
                 <div class="mota">
-                    Mô tả sản phẩm <br><textarea name="moTaSanPham"> <?php echo $sanPham['mo_ta'] ?> </textarea><br>
+                    Mô tả sản phẩm <br><textarea name="moTaSanPham"
+                        id="moTaSanPham"> <?php echo $sanPham['mo_ta'] ?> </textarea><br>
                 </div>
+                <span class="error " id="moTaSanPhamError"> Mô tả sản phẩm không được để trống</span><br>
+
                 <div class="infor">
                     <label for="anhSanPham">Ảnh SP</label>
                     <input id="anhSanPham" type="file" name="anhSanPham" style="opacity: 0.6;">
@@ -131,6 +151,7 @@ checkSession(2);
             </form>
         </div>
     </div>
+    <script src="./js/validCapNhat_SP.js"></script>
 </body>
 
 </html>

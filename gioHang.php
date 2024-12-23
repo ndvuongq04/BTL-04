@@ -70,6 +70,13 @@ checkSessionClient();
             font-weight: bold;
             margin-top: 200px;
         }
+
+        .thong-bao {
+            color: red;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -141,13 +148,28 @@ checkSessionClient();
                     </tr>
                 <?php
                 } ?>
-                <tr>
-                    <td colspan="">
-                        <h3>Tổng tiền :</h3>
-                    </td>
-                    <td colspan="3" style="text-align: center;"><?php echo number_format($tongTien, 0, ',', '.') . 'VNĐ'; ?></td>
-                    <td><a href="trangDatHang.php?id=<?php echo $gioHang['id'] ?>" class="pay">Thanh toán</a></td>
-                </tr>
+                <?php if ($tongTien != 0) {
+                ?>
+                    <tr>
+                        <td colspan="">
+                            <h3>Tổng tiền :</h3>
+                        </td>
+                        <td colspan="3" style="text-align: center;"><?php echo number_format($tongTien, 0, ',', '.') . 'VNĐ'; ?></td>
+
+                        <td><a href="trangDatHang.php?id=<?php echo $gioHang['id'] ?>" class="pay">Thanh toán</a></td>
+
+
+                    </tr>
+                <?php
+                } else {
+                ?>
+                    <tr>
+                        <td colspan="5">
+                            <h3 class="thong-bao">Bạn chưa thêm sản phẩm nào vào giỏ hàng</h3>
+                        </td>
+                    </tr>
+                <?php
+                } ?>
 
 
 

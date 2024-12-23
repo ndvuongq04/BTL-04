@@ -12,6 +12,12 @@ checkSessionClient();
     <title>Đổi mật khẩu</title>
     <link rel="stylesheet" href="css/dangNhap.css">
 </head>
+<style>
+    .error {
+        color: red;
+        display: none;
+    }
+</style>
 
 <body>
     <!-- header -->
@@ -57,28 +63,37 @@ checkSessionClient();
     <!-- end header -->
 
     <div class="box">
-        <form action="doiMatKhau.php" method="post">
+        <form id="formDoiMatKhau" action="doiMatKhau.php" method="post">
             <h2>Đổi mật khẩu</h2>
-            <p style="color : red"><?php echo isset($_GET['loi-doi-mat-khau']) ? "Lỗi đổi mật khẩu" : " " ?></p>
+            <p style="color : red">
+                <?php echo isset($_GET['loi-doi-mat-khau']) ? "Lỗi đổi mật khẩu" : " " ?>
+            </p>
             <div class="dau_vao">
                 <p>Tên đăng nhập</p>
-                <input type="text" placeholder="Nhập tên đăng nhập của bạn" name="tenDangNhap" required>
+                <input type="text" id="tenDangNhap" placeholder="Nhập tên đăng nhập của bạn" name="tenDangNhap">
             </div>
+            <span class="error" id="tenDangNhapError">Tên đăng nhập không được để trống</span>
+
 
             <div class="dau_vao">
                 <p>Mật khẩu hiện tại</p>
-                <input type="text" placeholder="Nhập mật khẩu hiện tại" name="mat_khau" required>
+                <input type="text" id="matKhauHienTai" placeholder="Nhập mật khẩu hiện tại" name="mat_khau">
             </div>
+            <span class="error" id="matKhauHienTaiError">Mật khẩu không được để trống</span>
+
 
             <div class="dau_vao">
                 <p>Mật khẩu mới</p>
-                <input type="text" placeholder="Nhập mật khẩu mới" name="matKhaumoi" required>
+                <input type="text" id="matKhauMoi" placeholder="Nhập mật khẩu mới" name="matKhaumoi">
             </div>
+            <span class="error" id="matKhauMoiError">Mật khẩu không được để trống</span>
 
-            <button type="submit" name="doimatkhau">Đổi mật khẩu </button>
+
+            <button type="submit" name="doimatkhau">Đổi mật khẩu</button>
         </form>
     </div>
 
+    <script src="js/validDoiMK.js"></script>
     <!-- footer -->
     <?php require('layout/footer.php'); ?>
     <!-- end footer -->
