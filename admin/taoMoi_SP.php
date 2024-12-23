@@ -102,15 +102,15 @@ checkSession(2);
                     <div class="infor">
                         <label for="soLuong">Số lượng</label>
                         <input type="number" id="soLuong" name="soLuong" placeholder="Nhập số lượng" style="opacity: 0.6;">
+                        <span class="error" id="soLuongError"> Số lượng không được để trống</span>
+                        <span class="error" id="soLuongAmError"> Số lượng phải lớn hơn 0</span>
                     </div>
-                    <span class="error" style="margin-top: 31px;" id="soLuongError"> Số lượng không được để trống</span>
-                    <span class="error" style="margin-top: 31px;" id="soLuongAmError"> Số lượng phải lớn hơn 0</span>
                     <div class="infor">
                         <label for="gia">Giá sản phẩm</label>
                         <input type="number" id="gia" name="gia" placeholder="Nhập giá sản phẩm" style="opacity: 0.6;">
+                        <span class="error" id="giaError"> Giá sản phẩm không được để trống</span>
+                        <span class="error" id="giaAmError"> Giá sản phẩm phải lớn hơn 0</span>
                     </div>
-                    <span class="error" style="margin-top: 31px;" id="giaError"> Giá sản phẩm không được để trống</span>
-                    <span class="error" style="margin-top: 31px;" id="giaAmError"> Giá sản phẩm phải lớn hơn 0</span>
                 </div>
 
                 <div class="mota">
