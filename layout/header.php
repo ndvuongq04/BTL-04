@@ -28,11 +28,12 @@
                         <a href="./tra.php">Trà</a>
                     </li>
                     <li>
-                        <a href="./nuocEpTraiCay.php">Nước ép trái cây</a>
+                        <a href="./nuocEpTraiCay.php">Trái cây xay lạnh</a>
                     </li>
                     <li>
-                        <a href="./nuocCoGa.php">Nước uống có ga</a>
+                        <a href="./nuocCoGa.php">Thức uống có ga</a>
                     </li>
+
                     <li>
                         <a href="./khac.php">Khác</a>
                     </li>

@@ -11,6 +11,12 @@ checkSession(2);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật khách hàng</title>
     <link rel="stylesheet" href="css/update.css">
+    <style>
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,29 +57,35 @@ checkSession(2);
             <h2>Cập nhật khách hàng id = <?php echo $_GET['id'] ?></h2>
         </div>
         <div class="main">
-            <form action="capNhat_KH.php" method="post">
+            <form id = "formCapNhatKH" action="capNhat_KH.php" method="post">
                 <div class="gr">
                     <div class="">
                         <input type="hidden" name="idCheck" value="<?php echo $idCurrent ?>" placeholder="" style="opacity: 0.6;" required>
                     </div>
                     <div class="infor">
                         <label for="name">Họ và tên</label>
-                        <input type="text" name="ho_ten" value="<?php echo $User['ho_ten'] ?>" placeholder="" style="opacity: 0.6;" required>
+                        <input type="text" id = "name" name="ho_ten" value="<?php echo $User['ho_ten'] ?>" placeholder="" style="opacity: 0.6;" >
+                        <span class="error" id="hoVaTenError">Họ và tên không được để trống</span> 
                     </div>
+
                     <div class="infor">
                         <label for="tel">Số điện thoại</label>
-                        <input type="text" name="so_dien_thoai" value="<?php echo $User['so_dien_thoai'] ?>" placeholder="" style="opacity: 0.6;" required>
+                        <input type="text" id="tel" name="so_dien_thoai" value="<?php echo $User['so_dien_thoai'] ?>" placeholder="" style="opacity: 0.6;" >
+                        <span class="error" id="soDienThoaiError">Số điện thoại không được để trống</span> 
                     </div>
+
                 </div>
                 <div class="gr">
                     <div class="infor">
                         <label for="address">Địa chỉ</label>
-                        <input type="text" name="dia_chi" value="<?php echo $User['dia_chi'] ?>" placeholder="" style="opacity: 0.6;" required>
+                        <input type="text" id="address" name="dia_chi" value="<?php echo $User['dia_chi'] ?>" placeholder="" style="opacity: 0.6;" >
                     </div>
                 </div>
+                <span class="error" id="diaChiError">Địa chỉ không được để trống</span> 
+
                 <div class="infor">
                     <label for="sex"> Giới tính</label>
-                    <select id="sex" name="gioi_tinh" style="opacity: 0.6;" required>
+                    <select id="sex" name="gioi_tinh" style="opacity: 0.6;" >
                         <option value="NAM" <?php echo $User['gioi_tinh'] == "NAM" ? "selected" : " " ?>>Nam</option>
                         <option value="NU" <?php echo $User['gioi_tinh'] == "NU" ? "selected" : " " ?>>Nữ</option>
                         <option value="KHAC" <?php echo $User['gioi_tinh'] == "KHAC" ? "selected" : " " ?>>Khác</option>
@@ -81,7 +93,7 @@ checkSession(2);
                 </div>
                 <div class="infor">
                     <label for="sex"> Vai trò</label>
-                    <select id="sex" name="vai_tro" style="opacity: 0.6;" required>
+                    <select id="sex" name="vai_tro" style="opacity: 0.6;" >
                         <option value="1" <?php echo $User['id_vai_tro'] == "1" ? "selected" : " " ?>>USER</option>
                         <option value="2" <?php echo $User['id_vai_tro'] == "2" ? "selected" : " " ?>>ADMIN</option>
                     </select>
@@ -95,6 +107,9 @@ checkSession(2);
             </form>
         </div>
     </div>
+    <script src="./js/validCapNhat_KH.js"></script>
+
+
 </body>
 
 </html>
