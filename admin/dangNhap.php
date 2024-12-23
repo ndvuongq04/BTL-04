@@ -52,6 +52,28 @@ if (isset($_SESSION['tenDangNhap']) && $_SESSION["vaiTro"] == 2) {
             */
             session_start();
             $_SESSION["tenDangNhap"] = "$tenDangNhap";
+
+            $sql = "SELECT * FROM nguoi_dung WHERE ten_dang_nhap = ? ";
+
+            // chuẩn bị câu lệnhlệnh
+            $stmt = $con->prepare($sql);
+
+
+            // gán các tham số vào câu lệnh
+            $stmt->bind_param("s", $tenDangNhap);
+
+            // Thực thi câu lệnh SQL
+            $stmt->execute();
+
+            // Lấy kết quả
+            $result = $stmt->get_result();
+
+            // lấy 1 dòng đầu tiên trong mảng kq ( có thể null )
+            $nguoiDung =  $result->fetch_assoc();
+
+            $idNguoiDung = $nguoiDung['id'];
+            $_SESSION["idNguoiDung"] = "$idNguoiDung";
+
             $_SESSION["vaiTro"] = 2;
             header('Location: index.php');
             exit; // không thực hiện các câu lệnh phía sau
