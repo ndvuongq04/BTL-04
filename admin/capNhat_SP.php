@@ -84,28 +84,26 @@ checkSession(2);
                         </div>
                         <label for="name">Tên sản phẩm</label>
                         <input type="text" id="name" name="tenSanPham" value="<?php echo $sanPham['ten'] ?>" style="opacity: 0.6;">
-                        <span class="error" id="tenError">Tên sản phẩm không được để trống</span> 
+                        <span class="error" id="tenError">Tên sản phẩm không được để trống</span>
                     </div>
                     <div class="infor">
                         <label for="loai">Phân loại</label><br>
                         <select name="loai" id="loai">
-                            <option value="Tra" <?php echo $sanPham['loai']=='Tra' ? 'selected' : '  ' ?>>Trà</option>
-                            <option value="NuocEp" <?php echo $sanPham['loai']=='NuocEp' ? 'selected' : ' ' ?>>Nước ép
-                                trái cây</option>
-                            <option value="DoUongCoGa" <?php echo $sanPham['loai']=='DoUongCoGa' ? 'selected' : ' ' ?>
-                                >Đồ uống có ga</option>
-                            <option value="CaPhe" <?php echo $sanPham['loai']=='CaPhe' ? 'selected' : ' ' ?>>Cà phê
+                            <option value="Tra" <?php echo $sanPham['loai'] == 'Tra' ? 'selected' : '  ' ?>>Trà</option>
+                            <option value="traiCayXayLanh" <?php echo $sanPham['loai'] == 'traiCayXayLanh' ? 'selected' : ' ' ?>>Trái cây xay lạnh</option>
+                            <option value="DoUongCoGa" <?php echo $sanPham['loai'] == 'DoUongCoGa' ? 'selected' : ' ' ?>>Đồ uống có ga</option>
+                            <option value="CaPhe" <?php echo $sanPham['loai'] == 'CaPhe' ? 'selected' : ' ' ?>>Cà phê
                             </option>
-                            <option value="Khac" <?php echo $sanPham['loai']=='Khac' ? 'selected' : ' ' ?>>Khác</option>
+                            <option value="Khac" <?php echo $sanPham['loai'] == 'Khac' ? 'selected' : ' ' ?>>Khác</option>
                         </select>
 
                     </div>
                     <div class="infor">
                         <label for="trang-thai">Trạng thái</label><br>
                         <select name="trang_thai" id="loai">
-                            <option value="1" <?php echo $sanPham['trang_thai']==1 ? 'selected' : '  ' ?>>Còn hàng
+                            <option value="1" <?php echo $sanPham['trang_thai'] == 1 ? 'selected' : '  ' ?>>Còn hàng
                             </option>
-                            <option value="0" <?php echo $sanPham['trang_thai']==0 ? 'selected' : ' ' ?>>Hết hàng
+                            <option value="0" <?php echo $sanPham['trang_thai'] == 0 ? 'selected' : ' ' ?>>Hết hàng
                             </option>
 
                         </select>
@@ -117,7 +115,7 @@ checkSession(2);
                         <input type="number" id="quantify" name="soLuong" value="<?php echo $sanPham['so_luong'] ?>" style="opacity: 0.6;">
                         <span class="error" id="soLuongError"> Số lượng không được để trống</span>
                         <span class="error" id="soLuongAmError"> Số lượng phải lớn hơn 0</span>
-                        
+
                     </div>
                     <div class="infor">
                         <label for="price">Giá</label>

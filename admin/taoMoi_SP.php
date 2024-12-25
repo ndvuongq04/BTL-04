@@ -90,7 +90,7 @@ checkSession(2);
                         <label for="loai">Phân loại</label><br>
                         <select name="loai" id="loai">
                             <option value="Tra">Trà</option>
-                            <option value="NuocEp">Nước ép trái cây</option>
+                            <option value="traiCayXayLanh">Trái cây xay lạnh</option>
                             <option value="DoUongCoGa">Đồ uống có ga</option>
                             <option value="CaPhe">Cà phê</option>
                             <option value="Khac">Khác</option>

@@ -18,8 +18,13 @@ checkSession(2);
     <?php
     require('layout/header.php');
     require('../php/admin/getAllObject.php');
+    require('../php/admin/cart.php');
+
     // hàm của admin/getAll_object.php
     $users = getAll_object($con, 'nguoi_dung');
+
+
+
     ?>
     <!-- end header -->
     <!-- <h1>Hello from file quanLyKH.php</h1> -->
@@ -51,10 +56,16 @@ checkSession(2);
                     <td>
                         <a href="xemCT_KH.php?id=<?php echo $user['id'] ?>"" style=" background-color: #1C8552; color : white;">Xem chi tiết</a>
                         <a href="capNhat_KH.php?id=<?php echo $user['id'] ?>"" style=" background-color: #FBBE00; color : black;">Cập nhật</a>
-                        <a href="xoa_KH.php?id=<?php echo $user['id'] ?>" style=" background-color: #DC3640; color : white;">Xóa</a>
+                        <?php
+                        $cart = getCartByUser($con, $user['id']);
+                        if ($cart == null) {
+                        ?>
+                            <a href="xoa_KH.php?id=<?php echo $user['id'] ?>" style=" background-color: #DC3640; color : white;">Xóa</a>
+                        <?php } ?>
                     </td>
                 </tr>
             <?php
+
             }
             ?>
 

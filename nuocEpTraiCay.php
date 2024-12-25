@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nước ép trái cây</title>
+    <title>Trái cây xay lạnh</title>
     <link rel="stylesheet" href="css/sanpham.css">
 </head>
 
@@ -12,12 +13,12 @@
     <?php
     require('layout/header.php');
     require('php/client/getObjectByCondition.php');
-    $sanPham = getObjectByCondition($con, 'san_pham', 'NuocEp');
+    $sanPham = getObjectByCondition($con, 'san_pham', 'traiCayXayLanh');
     ?>
 
     <div class="mid">
         <div class="tieude">
-            <b>Trà trái cây</b>
+            <b>Trái cây xay lạnh</b>
         </div>
         <div class="product">
             <?php
