@@ -244,3 +244,30 @@ function updateProductInCart($con, $idNguoiDung)
         return "lỗi câu lệnh sql";
     }
 }
+
+function getCartById($con, $id)
+{
+    $sql = "SELECT * FROM gio_hang WHERE id = ?";
+    // Mảng lưu kết quả
+    $cart = [];
+
+    // Chuẩn bị câu lệnh
+    $stmt = $con->prepare($sql);
+
+    // Kiểm tra câu lệnh đã sẵn sàng chưa
+    if ($stmt) {
+
+        // gán các tham số
+        $stmt->bind_param("i", $id);
+        // Thực thi câu lệnh SQL
+        $stmt->execute();
+
+        // Lấy kết quả
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    }
+
+    // Trả về mảng rỗng nếu có lỗi
+    return [];
+}

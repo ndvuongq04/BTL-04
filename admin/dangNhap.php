@@ -89,7 +89,7 @@ if (isset($_SESSION['tenDangNhap']) && $_SESSION["vaiTro"] == 2) {
         <form id="formDangNhap" action="dangNhap.php" method="post">
             <h2>Đăng Nhập</h2>
             <p style="color: red"><?php echo isset($_GET['loi']) ? "Đăng nhập thất bại" : " "; ?></p>
-            <p style="color: green"><?php echo isset($_GET['doi-mat-khau-ok']) ? "Đổi mật khẩu thành công" : " "; ?></p>
+            <p style="color: green"><?php echo isset($_GET['dang-xuat']) ? "Đăng xuất thành công " : " "; ?></p>
 
             <div class="dau_vao">
                 <label for="tenDangNhap">Tên đăng nhập</label>

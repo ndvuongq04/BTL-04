@@ -1,0 +1,43 @@
+
+- Phúc :
+    - quản lý sản phẩm :
+    - ..... đon hàng :
+- Ngân :
+    - đăng nhập , đăng ký , đăng xuất ( admin và client )
+    - ..... người dùng :
+- Quang anh :
+    - đơn hàng : hiển thị đơn hàng , hủy đơn hàng , xem ct đơn hàng
+    - phân quyền
+- Tường :
+    - hiển thị sản phẩm và xem chi tiết sản phẩm
+    - mua hàng
+- Vượng :
+
+
+
+- trang admin :
+    - quản lý sản phẩm :
+    - ..... đon hàng :
+    - ..... người dùng :
+- trang client :
+    - đăng nhập , đăng ký , đăng xuất ( admin và client )
+    - hiển thị sản phẩm và xem chi tiết sản phẩm
+    - gio hàng : hiển thị sản phẩm trong giỏ hàng , xóa sp trong giỏ hàng
+    - thêm sản phẩm vào giỏ hàng , 
+    - đơn hàng : hiển thị đơn hàng , hủy đơn hàng , xem ct đơn hàng
+- phân quyền
+- thiết kế database
+
+
+
+
+
+
+
+
+
+
+
+
+
+

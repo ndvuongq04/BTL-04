@@ -119,7 +119,7 @@ checkSessionClient();
                 <tr>
                     <td><?php echo $sp['ten'] ?></td>
                     <td><?php echo $cTDH['so_luong'] ?></td>
-                    <td><?php echo $cTDH['gia'] ?> đ</td>
+                    <td><?php echo $sp['gia'] ?> đ</td>
                     <td>
                         <img src="admin/img/<?php echo $sp['anh'] ?>" alt="" width="200px" height="200px">
                     </td>

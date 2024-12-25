@@ -16,7 +16,7 @@ checkSession(2);
 <body>
     <!-- header -->
     <?php
-    require('layout/header.php');
+    // require('layout/header.php');
     require('../php/admin/deleteObjectById.php');
 
     $idCurrent = $_GET['id']; // lấy id từ link url 
