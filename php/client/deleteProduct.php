@@ -2,7 +2,7 @@
 require('../connectMysql.php');
 require('cart.php');
 
-$idProduct = $_GET['idsp'];
+$idCTGH = $_GET['idCTGH'];
 $idCart = $_GET['idgh'];
 
 $cart = getCartById($con, $idCart);
@@ -11,7 +11,7 @@ $soLuong  = $soLuongCart - 1;
 updateCart($con, $idCart, $soLuong);
 
 // Câu lệnh SQL
-$sql = "DELETE FROM ct_gio_hang WHERE id_gio_hang = ? AND id_san_pham = ? ; ";
+$sql = "DELETE FROM ct_gio_hang WHERE id = ? ; ";
 
 
 
@@ -22,7 +22,7 @@ $stmt = $con->prepare($sql);
 if ($stmt) {
 
     // gán các tham số vào câu lệnh
-    $stmt->bind_param("ii", $idCart, $idProduct);
+    $stmt->bind_param("i", $idCTGH);
 
     // Thực thi câu lệnh SQL
     $stmt->execute();

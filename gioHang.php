@@ -142,7 +142,7 @@ checkSessionClient();
                         <td><?php echo number_format($cTGH['so_luong'] * $cTGH['gia']) ?> VNĐ</td>
 
                         <td>
-                            <a href="php/client/deleteProduct.php?idsp=<?php echo $sp['id'] ?>&idgh=<?php echo $gioHang['id'] ?>"
+                            <a href="php/client/deleteProduct.php?idCTGH=<?php echo $cTGH['id'] ?>&idgh=<?php echo $gioHang['id'] ?>"
                                 style=" background-color: #DC3640; color : white;">Xóa</a>
                         </td>
                     </tr>
